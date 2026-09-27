@@ -463,46 +463,10 @@
         </div>
       </div>
 
-      <!-- PROJECT 02 -->
-      <div class="project">
-        <div class="project-meta">
-          <p class="project-number">02</p>
-          <p class="project-year">2023</p>
-        </div>
-        <div class="project-body">
-          <h3>CMA: Correlative microscopy analysis tool</h3>
-          <p>
-            Correlative microscopy analysis tool built with another student for our thesis instructors, split across a defined frontend/backend boundary: I owned the MATLAB App Designer GUI (layout, interaction design, styling), 
-            while my partner handled the backend image-processing pipeline. Coordinated work on a shared Git repository, partitioning edits and handling merges to avoid conflicts. 
-          </p>
-          <div class="tags">
-            <span class="tag">MATLAB</span>
-            <span class="tag">GUI</span>
-            <span class="tag">Collaboration</span>
-          </div>
-          <a class="project-link" href="https://www.tuni.fi/en/tau/research/analysis-software-correlative-images" target="_blank">
-            View information
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
-          </a>
-          <br>
-          <a class="project-link" href="https://urn.fi/URN:NBN:fi:tuni-202305195941" target="_blank">
-            View Bachelor's Thesis
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
-          </a>
-        </div>
-        <div class="project-video">
-          <div class="video-wrap">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="videos/cma.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-
       <!-- PROJECT 03 -->
       <div class="project">
         <div class="project-meta">
-          <p class="project-number">03</p>
+          <p class="project-number">02</p>
           <p class="project-year">2025</p>
         </div>
         <div class="project-body">
@@ -512,7 +476,7 @@
             <li>Optimized pathfinding, rendering, and game state ticking.</li>
             <li>Custom socket server handling real-time state sync across multiple concurrent clients.</li>
             <li>AI avatar pipeline (background removal + facial recognition) turning player selfies into in-game character cutouts.</li>
-            <li>Spatial audio engine written from scratch: 100+ simultaneous sound sources with low-pass filtering. Released as a <a href="https://pypi.org/project/immersive-audio/">PyPI package.</a></li>
+            <li>Spatial audio engine written from scratch: 100+ simultaneous sound sources with low-pass filtering and reverb to simulate distance. Released as a <a href="https://pypi.org/project/immersive-audio/">PyPI package.</a></li>
           </ul>
           <p>Host in Python/Pygame, client in Kotlin/Android Studio. Developed over 6 months.</p>
           <div class="tags">
@@ -544,7 +508,7 @@
       <!-- PROJECT 04 -->
       <div class="project">
         <div class="project-meta">
-          <p class="project-number">04</p>
+          <p class="project-number">03</p>
           <p class="project-year">2026</p>
         </div>
         <div class="project-body">
@@ -581,6 +545,42 @@
               <span class="demo-mini-node"></span>
             </span>
           </button>
+        </div>
+      </div>
+
+      <!-- PROJECT 02 -->
+      <div class="project">
+        <div class="project-meta">
+          <p class="project-number">04</p>
+          <p class="project-year">2023</p>
+        </div>
+        <div class="project-body">
+          <h3>CMA: Correlative microscopy analysis tool</h3>
+          <p>
+            Correlative microscopy analysis tool built with another student for our thesis instructors, split across a defined frontend/backend boundary: I owned the MATLAB App Designer GUI (layout, interaction design, styling), 
+            while my partner handled the backend image-processing pipeline. Coordinated work on a shared Git repository, partitioning edits and handling merges to avoid conflicts. 
+          </p>
+          <div class="tags">
+            <span class="tag">MATLAB</span>
+            <span class="tag">GUI</span>
+            <span class="tag">Collaboration</span>
+          </div>
+          <a class="project-link" href="https://www.tuni.fi/en/tau/research/analysis-software-correlative-images" target="_blank">
+            View information
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+          </a>
+          <br>
+          <a class="project-link" href="https://urn.fi/URN:NBN:fi:tuni-202305195941" target="_blank">
+            View Bachelor's Thesis
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+          </a>
+        </div>
+        <div class="project-video">
+          <div class="video-wrap">
+            <video autoplay muted loop playsinline preload="none">
+              <source src="videos/cma.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
       </div>
 
@@ -784,7 +784,7 @@
 
   const demoStages = [
     {
-      label: 'Ingest', title: 'Raw game events', file: 'day001.raw_event_log.json', meta: 'single event (+274 more entries)', type: 'code',
+      label: 'Ingest', title: 'Raw game events', file: 'day001.log.json', meta: 'single event (+274 more entries)', type: 'code',
       description: 'The mod streams every event as it happens. At this point the data is accurate, but noisy and not yet useful as a story.',
       content: `{"schema_version": 1, "event_id": "0095127de4174b0e9a6bc14001cf0852", "playthrough_id": "34593c2935574ecca86402bcd1d688f3", "session_id": "71ab085a2cfc4338804c033b2c33b5aa", "sequence": 219, "tick": 40746, "game_day": 1, "tick_of_day": 40746, "map_id": 0, "diary_carrier_id": "Thing_Human698", "type": "pawn.injured", "participants": [{"pawn_id": "Thing_Wolverine17891", "role": "subject"}, {"pawn_id": "Thing_Hare17877", "role": "attacker"}], "data": {"details": {"injury": "Bite", "part": "body", "damage_type": "Bite"}, "subject_state": {"pawn_id": "Thing_Wolverine17891", "dead": false, "downed": false, "current_job": {"job_id": "Job_26806", "def": "PredatorHunt", "player_forced": false, "start_tick": 38901, "target_a": {"kind": "pawn", "thing_id": "Thing_Hare17877", "def": "Hare", "label": "hare", "map_id": 0}, "target_b": null, "target_c": null}, "is_prisoner": false, "is_slave": false, "map_id": 0, "mood": null, "mental_state": null, "mood_contributors": [], "health": [{"def": "Bite", "label": "Bite (hare teeth)", "severity": 2.785427, "part": "body"}], "relationships": []}, "other_state": {"pawn_id": "Thing_Hare17877", "dead": false, "downed": false, "current_job": {"job_id": "Job_28121", "def": "AttackMelee", "player_forced": false, "start_tick": 40641, "target_a": {"kind": "pawn", "thing_id": "Thing_Wolverine17891", "def": "Wolverine", "label": "wolverine", "map_id": 0}, "target_b": null, "target_c": null}, "is_prisoner": false, "is_slave": false, "map_id": 0, "mood": null, "mental_state": null, "mood_contributors": [], "health": [{"def": "MissingBodyPart", "label": "Bitten out (fresh)", "severity": 0.5, "part": "left eye"}, {"def": "Scratch", "label": "Scratch (wolverine claw)", "severity": 5.269222, "part": "rear left leg"}, {"def": "MissingBodyPart", "label": "Torn off (fresh)", "severity": 0.5, "part": "rear left paw"}], "relationships": []}}}
 `
@@ -821,7 +821,7 @@ Other events (select sparingly):
 - glitterworld medicine: A kit of advanced ultra-tech medical supplies, probably manufactured on a distant glitterworld. It contains advanced polymorphic drugs, nanite diagnostic and healing assisters, a mini-imager, and various multi-use tools.
 - component: Miscellaneous gears, capacitors, circuit boards, tubes, wheels, sensors, wires, chips, processors, and other electronic and industrial parts. Necessary for assembling complex machines or electronics.
 - charge rifle: A charged-shot assault rifle. Pulse-charge technology charges each shot with unstable energy as it leaves the barrel. Released on impact, the charged energy greatly increases the damage done.
-(21 more entires)`
+(21 more entries)`
     },
     {
       label: 'Plan', title: 'Build the narrative', file: 'day001.events.cleaned.txt', meta: 'LLM pass 1', type: 'code',
@@ -858,7 +858,9 @@ A person kneels beside a felled ibex doe, the charge rifle resting across their 
       description: 'A second pass turns the approved plan into character-consistent prose. This is the version saved to the colony diary and shown in the web app.',
       content: `Day 1: First Foundations
 
-The chill here bites deeper than any asteroid I've worked. Flora, bless her thick fur, snuggled close as I inventoried what little we have. A charge rifle, a few metal bars, a scattering of meals... enough to start, I suppose. The familiar weight of the rifle felt reassuring in this strange, white landscape. My mind keeps drifting back to the dust storms of Old Earth, the constant struggle for scraps. This feels…cleaner, somehow. Less desperate.\n\nI started the construction, hauling wood and steel. Building walls feels…primitive, after years of automated mining drills. Still, it’s necessary. A secure base is the first step. The steel door will be a welcome addition, a small piece of civilization in this wilderness. I even took a moment to look up at the sky. It’s vast, empty, and beautiful, a reminder of how far I’ve come, and how much further I have to go.\n\nThe hunting was necessary. An ibex doe, providing meat and leather. I felt a pang, a strange sadness, as I fired. Survival isn't always pretty. Then a ram appeared, and something…shifted. A panic took hold. I found myself running, cowering. Ridiculous, I know. But the feeling lingered, that primal fear of being hunted. I forced myself to refocus, to hunt again, but the edge was gone.\n\nNow, the stove needs fuel. Another small task, another step towards making this place…home. Perhaps this isn’t just about survival anymore. Perhaps it’s about building something lasting.`,
+The chill here bites deeper than any asteroid I've worked. Flora, bless her thick fur, snuggled close as I inventoried what little we have. A charge rifle, a few metal bars, a scattering of meals... enough to start, I suppose. The familiar weight of the rifle felt reassuring in this strange, white landscape. My mind keeps drifting back to the dust storms of Old Earth, the constant struggle for scraps. This feels…cleaner, somehow. Less desperate.\n\nI started the construction, hauling wood and steel. Building walls feels…primitive, after years of automated mining drills. Still, it’s necessary. A secure base is the first step. The steel door will be a welcome addition, a small piece of civilization in this wilderness. I even took a moment to look up at the sky. It’s vast, empty, and beautiful, a reminder of how far I’ve come, and how much further I have to go.\n\nThe hunting was necessary. An ibex doe, providing meat and leather. I felt a pang, a strange sadness, as I fired. Survival isn't always pretty. Then a ram appeared, and something…shifted. A panic took hold. I found myself running, cowering. Ridiculous, I know. But the feeling lingered, that primal fear of being hunted. I forced myself to refocus, to hunt again, but the edge was gone.\n\nNow, the stove needs fuel. Another small task, another step towards making this place…home. Perhaps this isn’t just about survival anymore. Perhaps it’s about building something lasting.
+`,
+      signature: '-Adrian',
       image: 'videos/day001_scribble.png',
       imageAlt: 'A pencil-style scene of a colonist kneeling with a rifle beside an ibex in a snowy landscape.'
     }
@@ -907,6 +909,11 @@ The chill here bites deeper than any asteroid I've worked. Flora, bless her thic
     const content = document.createElement(stage.type === 'code' ? 'pre' : 'div');
     content.className = stage.type === 'diary' ? 'demo-output-copy diary' : '';
     content.textContent = stage.content;
+    if (stage.signature) {
+      const signature = document.createElement('i');
+      signature.textContent = stage.signature;
+      content.append(signature);
+    }
     if (stage.image) {
       const stageImage = document.createElement('img');
       stageImage.className = 'demo-output-image';
