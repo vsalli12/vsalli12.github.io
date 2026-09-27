@@ -208,6 +208,92 @@
 
   .video-placeholder svg { color: var(--text-muted); width: 20px; height: 20px; opacity: 0.4; }
 
+  /* RIMLLM INTERACTIVE DEMO */
+  .demo-launch {
+    width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--border); border-radius: 6px;
+    padding: 18px; background: var(--surface); color: var(--text); display: flex;
+    flex-direction: column; justify-content: space-between; text-align: left; cursor: pointer;
+    transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .demo-launch:hover { border-color: var(--border-strong); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.07); }
+  .demo-launch:focus-visible, .demo-control:focus-visible, .demo-close:focus-visible, .demo-dot:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+  .demo-launch-top, .demo-launch-cta { display: flex; align-items: center; justify-content: space-between; }
+  .demo-launch-kicker, .demo-launch-count { font-family: var(--mono); font-size: 9px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .demo-launch-title { font-family: var(--mono); font-size: 14px; font-weight: 400; letter-spacing: -0.02em; }
+  .demo-launch-cta svg { width: 18px; height: 18px; color: var(--text-secondary); }
+  .demo-mini-pipeline { display: flex; align-items: center; gap: 5px; }
+  .demo-mini-node { width: 6px; height: 6px; border-radius: 50%; background: var(--border-strong); }
+  .demo-mini-line { height: 1px; flex: 1; background: var(--border); }
+
+  .demo-backdrop { position: fixed; inset: 0; z-index: 110; background: rgba(0,0,0,0.62); opacity: 0; visibility: hidden; transition: opacity 0.22s ease, visibility 0.22s ease; }
+  .demo-backdrop.visible { opacity: 1; visibility: visible; }
+  .demo-modal {
+    position: fixed; z-index: 111; top: 50%; left: 50%; width: min(900px, calc(100vw - 40px));
+    height: min(620px, calc(100vh - 40px)); transform: translate(-50%, -48%) scale(0.985);
+    border: 1px solid var(--border-strong); border-radius: 10px; background: var(--bg);
+    padding: 0; overflow: hidden;
+    box-shadow: 0 28px 80px rgba(0,0,0,0.32); display: flex; flex-direction: column;
+    opacity: 0; visibility: hidden; transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  }
+  .demo-modal.visible { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+  .demo-modal-header { min-height: 58px; padding: 0 18px 0 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .demo-modal-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .demo-modal-brand strong { font-family: var(--mono); font-size: 12px; font-weight: 500; }
+  .demo-modal-brand span { font-family: var(--mono); font-size: 10px; color: var(--text-muted); }
+  .demo-close { width: 32px; height: 32px; flex: 0 0 32px; border: 0; border-radius: 4px; background: transparent; color: var(--text-secondary); display: grid; place-items: center; cursor: pointer; }
+  .demo-close:hover { background: var(--tag-bg); color: var(--text); }
+  .demo-close svg { width: 16px; height: 16px; }
+  .demo-progress { padding: 18px 24px 0; display: grid; grid-template-columns: repeat(8, 1fr); }
+  .demo-progress-step { position: relative; text-align: center; }
+  .demo-progress-step::before { content: ''; position: absolute; top: 5px; left: 0; width: 100%; height: 1px; background: var(--border); }
+  .demo-progress-step:first-child::before { left: 50%; width: 50%; }
+  .demo-progress-step:last-child::before { width: 50%; }
+  .demo-progress-node { position: relative; z-index: 1; width: 11px; height: 11px; margin: 0 auto 7px; border: 2px solid var(--bg); border-radius: 50%; background: var(--border-strong); box-shadow: 0 0 0 1px var(--border); transition: background 0.18s ease, box-shadow 0.18s ease; }
+  .demo-progress-step.complete .demo-progress-node, .demo-progress-step.active .demo-progress-node { background: var(--text); box-shadow: 0 0 0 1px var(--text); }
+  .demo-progress-label { font-family: var(--mono); font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .demo-progress-step.active .demo-progress-label { color: var(--text); }
+  .demo-stage { flex: 1; min-height: 0; padding: 26px 34px 22px; display: grid; grid-template-columns: 0.78fr 1.55fr; gap: 34px; align-items: start; }
+  .demo-stage-info { padding-top: 4px; min-width: 0; }
+  .demo-stage-number { font-family: var(--mono); font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .demo-stage-info h2 { font-size: 24px; font-weight: 400; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .demo-stage-info p { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+  .demo-output {
+    width: 100%; min-width: 0; height: 100%; min-height: 290px; max-height: 360px;
+    overflow: auto; border: 1px solid var(--border); border-radius: 6px; background: var(--surface);
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+  .demo-output::-webkit-scrollbar { width: 9px; height: 9px; }
+  .demo-output::-webkit-scrollbar-track { background: transparent; }
+  .demo-output::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border: 2px solid var(--surface);
+    border-radius: 999px;
+  }
+  .demo-output::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+  .demo-output::-webkit-scrollbar-corner { background: var(--surface); }
+  .demo-output-bar { position: sticky; top: 0; padding: 9px 12px; border-bottom: 1px solid var(--border); background: var(--surface); display: flex; justify-content: space-between; font-family: var(--mono); font-size: 9px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .demo-output pre, .demo-output-copy { padding: 16px 18px 20px; color: var(--text-secondary); font-family: var(--mono); font-size: 11px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
+  .demo-output-copy.diary { font-family: var(--sans); font-size: 14px; line-height: 1.8; }
+  .demo-output-image {
+    display: block;
+    float: right;
+    width: 46%;
+    height: auto;
+    margin: 0 0 12px 18px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .demo-modal-footer { min-height: 64px; padding: 0 22px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .demo-dots { display: flex; gap: 7px; }
+  .demo-dot { width: 18px; height: 18px; border: 0; background: transparent; cursor: pointer; position: relative; }
+  .demo-dot::after { content: ''; position: absolute; inset: 6px; border-radius: 50%; background: var(--border-strong); }
+  .demo-dot.active::after { background: var(--text); }
+  .demo-actions { display: flex; gap: 8px; }
+  .demo-control { min-width: 88px; height: 34px; padding: 0 12px; border: 1px solid var(--border-strong); border-radius: 4px; background: transparent; color: var(--text-secondary); font-family: var(--mono); font-size: 11px; cursor: pointer; }
+  .demo-control:hover:not(:disabled) { background: var(--surface); color: var(--text); }
+  .demo-control:disabled { opacity: 0.35; cursor: default; }
+
   .video-backdrop {
   display: none;
   position: fixed;
@@ -274,6 +360,13 @@
     .about-grid { grid-template-columns: 1fr; gap: 32px; }
     .contact-row { flex-direction: column; gap: 24px; }
     .hero h1 { font-size: 28px; }
+    .demo-modal { width: calc(100vw - 20px); height: calc(100vh - 20px); }
+    .demo-progress-label { display: none; }
+    .demo-modal-brand span { display: none; }
+    .demo-stage { grid-template-columns: 1fr; gap: 16px; padding: 18px; overflow-x: hidden; overflow-y: auto; }
+    .demo-stage-info h2 { font-size: 21px; }
+    .demo-output { height: auto; min-height: 280px; max-height: none; }
+    .demo-modal-footer { padding: 0 14px; }
   }
 </style>
 </head>
@@ -438,6 +531,52 @@
           <p class="project-year">2026</p>
         </div>
         <div class="project-body">
+          <h3>RimLLM: AI-Generated Colony Diaries</h3>
+          <p>A RimWorld mod that transforms raw, chaotic gameplay data into coherent daily diary entries. The system streams in-game events over WebSockets to a Python backend,
+            stores them in SQL, filters and summarizes relevant events, and enriches them with RimWorld-specific terminology sourced automatically from the game wiki.
+            A dual-pass LLM pipeline then generates consistent narrative entries, with optional AI-generated images displayed alongside them in a lightweight web app.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">GenAI</span>
+            <span class="tag">RAG</span>
+            <span class="tag">SQL</span>
+          </div>
+          <a class="project-link" href="https://github.com/vsalli12/RimLLM" target="_blank">
+            View on GitHub
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+          </a>
+        </div>
+        <div class="project-video">
+          <button class="demo-launch" id="rimllm-demo-trigger" type="button" aria-haspopup="dialog" aria-controls="rimllm-demo">
+            <span class="demo-launch-top">
+              <span class="demo-launch-kicker">Pipeline walkthrough</span>
+              <span class="demo-launch-count">8 stages</span>
+            </span>
+            <span class="demo-launch-cta">
+              <span class="demo-launch-title">Show interactive demo</span>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+            </span>
+            <span class="demo-mini-pipeline" aria-hidden="true">
+              <span class="demo-mini-node"></span><span class="demo-mini-line"></span>
+              <span class="demo-mini-node"></span><span class="demo-mini-line"></span>
+              <span class="demo-mini-node"></span><span class="demo-mini-line"></span>
+              <span class="demo-mini-node"></span><span class="demo-mini-line"></span>
+              <span class="demo-mini-node"></span><span class="demo-mini-line"></span>
+              <span class="demo-mini-node"></span><span class="demo-mini-line"></span>
+              <span class="demo-mini-node"></span><span class="demo-mini-line"></span>
+              <span class="demo-mini-node"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PROJECT 05 -->
+      <div class="project">
+        <div class="project-meta">
+          <p class="project-number">05</p>
+          <p class="project-year">2026</p>
+        </div>
+        <div class="project-body">
         <h3>Nappulapeli 2 <span class="badge-wip">WIP</span></h3>
           <p>A party dungeon crawler with a shared host screen, styled as 
           a nightclub crawl with Slay the Spire-style run progression and shops. 
@@ -542,6 +681,35 @@
   <video muted loop playsinline id="expanded-video"></video>
 </div>
 
+<div class="demo-backdrop" id="demo-backdrop"></div>
+<section class="demo-modal" id="rimllm-demo" role="dialog" aria-modal="true" aria-labelledby="demo-title" aria-hidden="true">
+  <header class="demo-modal-header">
+    <div class="demo-modal-brand">
+      <strong>RimLLM</strong>
+      <span>one colony day, through the pipeline</span>
+    </div>
+    <button class="demo-close" id="demo-close" type="button" aria-label="Close demo">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>
+    </button>
+  </header>
+  <div class="demo-progress" id="demo-progress" aria-hidden="true"></div>
+  <div class="demo-stage">
+    <div class="demo-stage-info">
+      <p class="demo-stage-number" id="demo-stage-number"></p>
+      <h2 id="demo-title"></h2>
+      <p id="demo-description"></p>
+    </div>
+    <div class="demo-output" id="demo-output"></div>
+  </div>
+  <footer class="demo-modal-footer">
+    <div class="demo-dots" id="demo-dots" aria-label="Demo stages"></div>
+    <div class="demo-actions">
+      <button class="demo-control" id="demo-prev" type="button">← Previous</button>
+      <button class="demo-control" id="demo-next" type="button">Next →</button>
+    </div>
+  </footer>
+</section>
+
 <script>
   const backdrop = document.getElementById('backdrop');
   const expandedWrap = document.getElementById('expanded-wrap');
@@ -599,6 +767,184 @@
   backdrop.addEventListener('click', closeVideo);
   expandedWrap.addEventListener('click', closeVideo);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
+
+  const demoStages = [
+    {
+      label: 'Ingest', title: 'Raw game events', file: 'day001.raw_event_log.json', meta: 'single event (+274 more entries)', type: 'code',
+      description: 'The mod streams every event as it happens. At this point the data is accurate, but noisy and not yet useful as a story.',
+      content: `{"schema_version": 1, "event_id": "0095127de4174b0e9a6bc14001cf0852", "playthrough_id": "34593c2935574ecca86402bcd1d688f3", "session_id": "71ab085a2cfc4338804c033b2c33b5aa", "sequence": 219, "tick": 40746, "game_day": 1, "tick_of_day": 40746, "map_id": 0, "diary_carrier_id": "Thing_Human698", "type": "pawn.injured", "participants": [{"pawn_id": "Thing_Wolverine17891", "role": "subject"}, {"pawn_id": "Thing_Hare17877", "role": "attacker"}], "data": {"details": {"injury": "Bite", "part": "body", "damage_type": "Bite"}, "subject_state": {"pawn_id": "Thing_Wolverine17891", "dead": false, "downed": false, "current_job": {"job_id": "Job_26806", "def": "PredatorHunt", "player_forced": false, "start_tick": 38901, "target_a": {"kind": "pawn", "thing_id": "Thing_Hare17877", "def": "Hare", "label": "hare", "map_id": 0}, "target_b": null, "target_c": null}, "is_prisoner": false, "is_slave": false, "map_id": 0, "mood": null, "mental_state": null, "mood_contributors": [], "health": [{"def": "Bite", "label": "Bite (hare teeth)", "severity": 2.785427, "part": "body"}], "relationships": []}, "other_state": {"pawn_id": "Thing_Hare17877", "dead": false, "downed": false, "current_job": {"job_id": "Job_28121", "def": "AttackMelee", "player_forced": false, "start_tick": 40641, "target_a": {"kind": "pawn", "thing_id": "Thing_Wolverine17891", "def": "Wolverine", "label": "wolverine", "map_id": 0}, "target_b": null, "target_c": null}, "is_prisoner": false, "is_slave": false, "map_id": 0, "mood": null, "mental_state": null, "mood_contributors": [], "health": [{"def": "MissingBodyPart", "label": "Bitten out (fresh)", "severity": 0.5, "part": "left eye"}, {"def": "Scratch", "label": "Scratch (wolverine claw)", "severity": 5.269222, "part": "rear left leg"}, {"def": "MissingBodyPart", "label": "Torn off (fresh)", "severity": 0.5, "part": "rear left paw"}], "relationships": []}}}
+`
+    },
+    {
+      label: 'Filter', title: 'Signal over noise', file: 'day001.events.raw.txt', meta: 'manual clean', type: 'code',
+      description: 'Events are stored in SQL, grouped by colony day, and scored for narrative relevance. Routine actions drop away; connected events become one incident.',
+      content: `Major events (cover these in the diary):
+- Around 22:00: DEATH: ibex doe was killed by Adrian (Bullet); recorded injuries: Gunshot (charge rifle) to neck, gunshot to right ear, Gunshot (charge rifle) to body.
+
+Other events (select sparingly):
+- Around 12:00: Adrian was doing Carried.
+- Around 12:00: Flora plaintively snuggled up to Adrian. Flora is very fond of Adrian; Adrian feels neutral toward Flora.
+- Around 12:00: Adrian started Take Inventory involving Diary.
+- Around 13:00: Adrian started Equip involving charge rifle (normal).
+- Around 13:00: Adrian started Haul To Cell involving wood.
+- Around 14:00: Adrian started Haul To Container involving steel.
+- Around 14:00: Adrian started Finish Frame involving steel wall (building) (14 job starts).
+- Around 15:00: Adrian started Finish Frame involving steel wall (building), steel door (building) (8 job starts).
+- Around 15:00: Adrian started Deconstruct involving steel wall.
+- Around 17:00: Adrian started Cut Plant involving birch tree.
+- Around 18:00: Adrian started Cut Plant involving pine tree.
+- Around 18:00: Adrian started Skygaze.
+- Around 20:00: Adrian started Hunt involving ibex doe.
+- Around 22:00: Adrian started Hunt involving ibex ram.
+- Around 22:00: Adrian started Flee And Cower.
+- Around 23:00: Adrian started Hunt involving ibex ram.
+- Around 02:00 (next day): Adrian started Refuel involving fueled stove.`
+    },
+    {
+      label: 'Enrich', title: 'Ground it in RimWorld', file: 'context.prompt', meta: '+ retrieved context', type: 'code',
+      description: 'Key terms trigger retrieval from an automatically built wiki index. Compact context is added so the model uses the game’s world and mechanics correctly.',
+      content: `Relevant terminology (reference only):
+- glitterworld medicine: A kit of advanced ultra-tech medical supplies, probably manufactured on a distant glitterworld. It contains advanced polymorphic drugs, nanite diagnostic and healing assisters, a mini-imager, and various multi-use tools.
+- component: Miscellaneous gears, capacitors, circuit boards, tubes, wheels, sensors, wires, chips, processors, and other electronic and industrial parts. Necessary for assembling complex machines or electronics.
+- charge rifle: A charged-shot assault rifle. Pulse-charge technology charges each shot with unstable energy as it leaves the barrel. Released on impact, the charged energy greatly increases the damage done.
+(21 more entires)`
+    },
+    {
+      label: 'Plan', title: 'Build the narrative', file: 'day001.events.cleaned.txt', meta: 'LLM pass 1', type: 'code',
+      description: 'The first LLM pass creates a factual story plan. Separating structure from prose keeps chronology intact and prevents invented events.',
+      content: `Around 12:00, Adrian carried an item while Flora snuggled against him. He then began taking inventory, including a diary. Shortly after, Adrian equipped a charge rifle and started hauling wood towards a cell. He also began hauling steel to a container and working on a steel wall as part of a building project.
+
+At 15:00, Adrian continued working on the building, now including a steel door, and began deconstructing a steel wall. He then cut a birch tree and a pine tree, taking a moment to gaze at the sky. Later, around 20:00, Adrian began hunting an ibex doe.
+
+Around 22:00, Adrian killed an ibex doe with a charge rifle, inflicting gunshot wounds to her neck, right ear, and body. Immediately following this, he began hunting an ibex ram and then entered a state of fleeing and cowering. He resumed hunting the ibex ram around 23:00.
+
+The following morning, around 02:00, Adrian began refueling a stove.`
+    },
+
+    {
+      label: 'Personalize', title: 'Scope the character', file: 'adrian_backstory.json', meta: 'backstory inference', type: 'code',
+      description: 'To personalize the story, the characters origin, skills and traits are used to generate a backstory to the character.',
+      content: `The dust of Old Earth clung to Adrian even after decades spent burrowing through asteroids. He’d been a child when the Collapse came, scavenging for scraps amidst the ruins with his family, a brutal education that etched a primal instinct for survival deep within him. Losing them young fostered a ruthless pragmatism, a desperate need to accumulate and protect anything of value - a habit that manifested as greed. The deep space mining colonies offered a chance at a stable life, a predictable return for backbreaking labor. Yet, the claustrophobia and isolation only amplified his drive to hoard and his simmering resentment for a universe that had taken everything. Each vein of ore he cracked open felt like a small victory against the darkness.`
+    },
+    {
+      label: 'Memorize', title: 'Retain important events', file: 'day001.response_storybits.txt', meta: 'storybits', type: 'code',
+      description: 'The second LLM pass also takes the most important events and adds them to memory for interesting connections in the future.',
+      content: `Adrian began construction of a basic shelter, prioritizing steel walls and a steel door.
+Adrian harvested wood and pine from the surrounding landscape.
+Adrian killed an ibex doe with a charge rifle, providing resources for the colony.`
+    },
+    {
+      label: 'Visualize', title: 'Visualize an event', file: 'day001_scribble_prompt.txt', meta: 'ComfyUI', type: 'code',
+      description: 'An optional image generation pass, which generates a single image to complement the most interesting event of the day. Generates through an ComfyUI API.',
+      content: `drawn, poor pencil art, black and white, diary scribble, 
+A person kneels beside a felled ibex doe, the charge rifle resting across their lap. The rifle’s barrel points towards the ground, its casing reflecting the diffuse light of the overcast sky. Around them, a stark, white landscape stretches to a distant horizon, punctuated by sparse, low-lying vegetation struggling through the snow. Scattered pieces of wood and steel lie close by, partially obscuring a rudimentary wall under construction. To the person’s right, an adult ram stands poised, its posture suggesting immediate threat. The ram’s dense, shaggy coat blends subtly with the surrounding terrain, obscuring its full form. The person’s shoulders are hunched, head lowered, and posture conveys a sudden, deep unease.`
+    },
+    {
+      label: 'Write', title: 'Final diary entry', file: 'day001.response.txt', meta: 'LLM pass 2', type: 'diary',
+      description: 'A second pass turns the approved plan into character-consistent prose. This is the version saved to the colony diary and shown in the web app.',
+      content: `Day 1: First Foundations
+
+The chill here bites deeper than any asteroid I've worked. Flora, bless her thick fur, snuggled close as I inventoried what little we have. A charge rifle, a few metal bars, a scattering of meals... enough to start, I suppose. The familiar weight of the rifle felt reassuring in this strange, white landscape. My mind keeps drifting back to the dust storms of Old Earth, the constant struggle for scraps. This feels…cleaner, somehow. Less desperate.\n\nI started the construction, hauling wood and steel. Building walls feels…primitive, after years of automated mining drills. Still, it’s necessary. A secure base is the first step. The steel door will be a welcome addition, a small piece of civilization in this wilderness. I even took a moment to look up at the sky. It’s vast, empty, and beautiful, a reminder of how far I’ve come, and how much further I have to go.\n\nThe hunting was necessary. An ibex doe, providing meat and leather. I felt a pang, a strange sadness, as I fired. Survival isn't always pretty. Then a ram appeared, and something…shifted. A panic took hold. I found myself running, cowering. Ridiculous, I know. But the feeling lingered, that primal fear of being hunted. I forced myself to refocus, to hunt again, but the edge was gone.\n\nNow, the stove needs fuel. Another small task, another step towards making this place…home. Perhaps this isn’t just about survival anymore. Perhaps it’s about building something lasting.`,
+      image: 'videos/day001_scribble.png',
+      imageAlt: 'A pencil-style scene of a colonist kneeling with a rifle beside an ibex in a snowy landscape.'
+    }
+  ];
+
+  const demoTrigger = document.getElementById('rimllm-demo-trigger');
+  const demoModal = document.getElementById('rimllm-demo');
+  const demoBackdrop = document.getElementById('demo-backdrop');
+  const demoClose = document.getElementById('demo-close');
+  const demoPrev = document.getElementById('demo-prev');
+  const demoNext = document.getElementById('demo-next');
+  const demoProgress = document.getElementById('demo-progress');
+  const demoDots = document.getElementById('demo-dots');
+  let demoIndex = 0;
+
+  demoStages.forEach((stage, index) => {
+    const progress = document.createElement('div');
+    progress.className = 'demo-progress-step';
+    progress.innerHTML = `<div class="demo-progress-node"></div><div class="demo-progress-label">${stage.label}</div>`;
+    demoProgress.appendChild(progress);
+
+    const dot = document.createElement('button');
+    dot.className = 'demo-dot';
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Go to stage ${index + 1}: ${stage.title}`);
+    dot.addEventListener('click', () => renderDemoStage(index));
+    demoDots.appendChild(dot);
+  });
+
+  function renderDemoStage(index) {
+    demoIndex = Math.max(0, Math.min(index, demoStages.length - 1));
+    const stage = demoStages[demoIndex];
+    document.getElementById('demo-stage-number').textContent = `Stage ${demoIndex + 1} / ${demoStages.length} · ${stage.label}`;
+    document.getElementById('demo-title').textContent = stage.title;
+    document.getElementById('demo-description').textContent = stage.description;
+
+    const output = document.getElementById('demo-output');
+    output.innerHTML = '';
+    const bar = document.createElement('div');
+    bar.className = 'demo-output-bar';
+    const file = document.createElement('span');
+    file.textContent = stage.file;
+    const meta = document.createElement('span');
+    meta.textContent = stage.meta;
+    bar.append(file, meta);
+    const content = document.createElement(stage.type === 'code' ? 'pre' : 'div');
+    content.className = stage.type === 'diary' ? 'demo-output-copy diary' : '';
+    content.textContent = stage.content;
+    if (stage.image) {
+      const stageImage = document.createElement('img');
+      stageImage.className = 'demo-output-image';
+      stageImage.src = stage.image;
+      stageImage.alt = stage.imageAlt || '';
+      stageImage.loading = 'lazy';
+      content.prepend(stageImage);
+    }
+    output.append(bar, content);
+    output.scrollTop = 0;
+
+    [...demoProgress.children].forEach((item, i) => {
+      item.classList.toggle('active', i === demoIndex);
+      item.classList.toggle('complete', i < demoIndex);
+    });
+    [...demoDots.children].forEach((dot, i) => {
+      dot.classList.toggle('active', i === demoIndex);
+      dot.setAttribute('aria-current', i === demoIndex ? 'step' : 'false');
+    });
+    demoPrev.disabled = demoIndex === 0;
+    demoNext.textContent = demoIndex === demoStages.length - 1 ? 'Restart ↻' : 'Next →';
+  }
+
+  function openDemo() {
+    renderDemoStage(0);
+    demoBackdrop.classList.add('visible');
+    demoModal.classList.add('visible');
+    demoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    demoClose.focus();
+  }
+
+  function closeDemo() {
+    demoBackdrop.classList.remove('visible');
+    demoModal.classList.remove('visible');
+    demoModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    demoTrigger.focus();
+  }
+
+  demoTrigger.addEventListener('click', openDemo);
+  demoClose.addEventListener('click', closeDemo);
+  demoBackdrop.addEventListener('click', closeDemo);
+  demoPrev.addEventListener('click', () => renderDemoStage(demoIndex - 1));
+  demoNext.addEventListener('click', () => renderDemoStage(demoIndex === demoStages.length - 1 ? 0 : demoIndex + 1));
+  document.addEventListener('keydown', e => {
+    if (!demoModal.classList.contains('visible')) return;
+    if (e.key === 'Escape') closeDemo();
+    if (e.key === 'ArrowLeft') renderDemoStage(demoIndex - 1);
+    if (e.key === 'ArrowRight') renderDemoStage(demoIndex + 1);
+  });
+  if (window.location.hash === '#rimllm-demo') openDemo();
 
   // Lazy-load (keep your original logic)
   const videos = document.querySelectorAll('video[preload="none"]');
