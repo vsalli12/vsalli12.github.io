@@ -1,0 +1,21 @@
+{
+  "day": 8,
+  "game_id": "34593c2935574ecca86402bcd1d688f3",
+  "session_id": "71ab085a2cfc4338804c033b2c33b5aa",
+  "model": "gemma3:12b",
+  "page_title": "Wood and Warnings",
+  "chronicle": "The day started like many others – a packaged survival meal to kick things off, followed by hauling wood. It’s a repetitive task, but the smell of fresh-cut timber is… grounding, I suppose. Flora gave me a nudge against my leg while I was working on the wood floor, a brief, welcome moment of warmth against this endless chill. Later, Yttryshuk joined me in the wood-hauling, and we managed a few conversations. He’s… a difficult colonist. I tried to explain to him the importance of following instructions, hinting at the consequences of disobedience. He seemed to hear me, but I’m not sure he truly understands. His thoughts wander, often landing on dark places. \n\nI spent the afternoon trying to make the bedroom a little less depressing – a wooden bed and a wall lamp seemed like a start. Meditation helped, although the constant hum of the colony’s machinery tends to intrude. The psychic soothe was a welcome break from the usual anxieties; a rare moment of genuine contentment spread through me. \n\nEvenings with Yttryshuk are… strange. We spoke about poker, of all things, and oddly enough, comfortable furniture. It's like he's yearning for a life he'll never have. He reminisced about fighting okapis, something I can’t even begin to comprehend, and then drifted into a wistful longing for vacations. It’s unsettling, hearing those desires from someone who seems so resigned. I harvested some rice after midnight, then planted more, knowing the cycle must continue. Each sprout, each harvest, is a small victory against the harshness of this place.",
+  "story_bits": [
+    "Adrian and Yttryshuk engaged in multiple conversations, discussing various topics including hostile beggars and learning blackjack.",
+    "Adrian worked on constructing a wooden bed and a wall lamp to improve the colony’s living conditions.",
+    "Adrian harvested and sowed rice plants to maintain the colony's food supply."
+  ],
+  "narrator_name": "Adrian",
+  "scribble": {
+    "key": "4af7eaf1b585d09576ea1c9cc8e3c8aa88895fe7c4f54e1875a21f20f3080f93",
+    "source_hash": "5d2dd4bdfe9e7ae5cbe5f8a954878af6a97578bc2792a1d0ef7af7107b2a8b23",
+    "prompt": "A person stands hunched over a patch of dark soil, their hands moving with practiced efficiency as they press rice seedlings into the earth. The field stretches out behind them, a rough rectangle defined by uneven terrain, while a colony structure looms in the distance, its metal walls reflecting the faint light of a single wall lamp affixed to the nearby building. The lamp casts a warm glow on the person's back, highlighting worn, functional clothing. A taller figure stands a few paces away, their posture slumped, gaze fixed on the ground, exhibiting a diminished stance. The soil is dark and moist, contrasting with the metallic grey of the colony's structures and the dim light of the sky.",
+    "filename": "day008.scribble.4af7eaf1b585d095.png",
+    "workflow_hash": "35d96043f8c9cdd718db831477552d2ac3656b0daea9b31aec4c4dca05ad7529"
+  }
+}

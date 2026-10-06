@@ -1,0 +1,132 @@
+{
+  "title": "Adrian's story",
+  "opening": {
+    "protagonist_id": "Thing_Human698",
+    "protagonist_name": "Adrian",
+    "first_day": 1,
+    "source_end_sequence": 18,
+    "game_id": "34593c2935574ecca86402bcd1d688f3",
+    "session_id": "71ab085a2cfc4338804c033b2c33b5aa",
+    "background": {
+      "pawn_id": "Thing_Human698",
+      "name": "Adrian",
+      "gender": "Male",
+      "species": "human",
+      "age_biological": 21,
+      "age_chronological": 103,
+      "faction": "New Arrivals",
+      "is_colonist": true,
+      "is_humanlike": true,
+      "is_animal": false,
+      "hostile_to_player": false,
+      "is_colony_animal": false,
+      "dead": false,
+      "spawned": true,
+      "map_id": 0,
+      "in_caravan": false,
+      "is_prisoner": false,
+      "is_slave": false,
+      "childhood": "apocalypse survivor",
+      "adulthood": "deep space miner",
+      "traits": [
+        {
+          "def": "Greedy",
+          "label": "greedy",
+          "degree": 0,
+          "suppressed": false
+        },
+        {
+          "def": "Tough",
+          "label": "tough",
+          "degree": 0,
+          "suppressed": false
+        }
+      ],
+      "skills": [
+        {
+          "def": "Shooting",
+          "level": 7,
+          "passion": "Major"
+        },
+        {
+          "def": "Melee",
+          "level": 4,
+          "passion": "None"
+        },
+        {
+          "def": "Construction",
+          "level": 7,
+          "passion": "Minor"
+        },
+        {
+          "def": "Mining",
+          "level": 10,
+          "passion": "Major"
+        },
+        {
+          "def": "Cooking",
+          "level": 4,
+          "passion": "None"
+        },
+        {
+          "def": "Plants",
+          "level": 4,
+          "passion": "None"
+        },
+        {
+          "def": "Animals",
+          "level": 4,
+          "passion": "None"
+        },
+        {
+          "def": "Crafting",
+          "level": 2,
+          "passion": "None"
+        },
+        {
+          "def": "Artistic",
+          "level": 0,
+          "passion": "None"
+        },
+        {
+          "def": "Medicine",
+          "level": 2,
+          "passion": "None"
+        },
+        {
+          "def": "Social",
+          "level": 2,
+          "passion": "None"
+        },
+        {
+          "def": "Intellectual",
+          "level": 1,
+          "passion": "None"
+        }
+      ],
+      "relationships": [
+        {
+          "type": "Bond",
+          "pawn_id": "Thing_Husky11675",
+          "name": "Flora"
+        }
+      ]
+    },
+    "scenario": {
+      "name": "The Rich Explorer",
+      "summary": "One rich explorer out to experience the universe. Extra difficult.",
+      "description": "People called you crazy for leaving your glitterworld home, but you always yearned to explore the stars - outside the neurosimulator. Now you're at the end of your long journey in cryptosleep, landing on an unknown rimworld to see what it's like.\n\nNote: Since your starting character will lack some skills, this is an especially difficult scenario in the early game.",
+      "full_information": "People called you crazy for leaving your glitterworld home, but you always yearned to explore the stars - outside the neurosimulator. Now you're at the end of your long journey in cryptosleep, landing on an unknown rimworld to see what it's like.\n\nNote: Since your starting character will lack some skills, this is an especially difficult scenario in the early game.\r\n\r\nYour faction will be a New Arrivals.\r\nStart with 1 person.\r\nStart with research: Gun turrets\r\n\nStart with:\n   -Silver x2000\n   -Gold x30\n   -Packaged survival meal x40\n   -Glitterworld medicine x30\n   -Component x30\n   -Charge rifle\n   -Random pet x1\n   -Steel x450\n   -Wood x300"
+    },
+    "environment": [
+      {
+        "map_id": 0,
+        "biome": "Tundra",
+        "biome_label": "tundra",
+        "weather": "Clear",
+        "weather_label": "clear",
+        "outdoor_temperature_c": 5.034475
+      }
+    ]
+  }
+}

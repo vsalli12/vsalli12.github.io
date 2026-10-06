@@ -1,0 +1,21 @@
+{
+  "day": 10,
+  "game_id": "34593c2935574ecca86402bcd1d688f3",
+  "session_id": "71ab085a2cfc4338804c033b2c33b5aa",
+  "model": "gemma3:12b",
+  "page_title": "Darkness Falls",
+  "chronicle": "The feeling started subtly, a prickling unease as I neared the ancient wall earlier this evening. I can’t say what it was, something about the stones themselves… foreboding, perhaps. I spent most of the afternoon mining compacted steel, the repetitive clang of the pickaxe strangely comforting against the creeping anxiety. A few moments staring at the sky helped, too.  It’s a bleak canvas out here, but the stars… they’re something. A little pemmican kept the hunger at bay. \n\nLater, I started deconstructing that granite wall – a tedious job, but necessary.  The day suddenly dissolved into chaos.  I was just trying to pry a block loose when the yelling started. Then... the *things*. Dark, twisted shapes – spikes and limbs flailing in the dim light. I ran, instinctively. Fled. I don’t relish cowardice, but survival has always been the priority.  I fired a few shots, but it felt like spitting at a storm.\n\nCombat.  It was… desperate.  Yttryshuk fought alongside me, a grim and silent figure.  We managed to bring down one of them, but they kept coming. The charge rifle roared, each pulse a fleeting moment of hope.  My fists connected with another, a sickening thud.  Then, the pain.  A wave of it, crashing over me. A cracked femur, the sting of stabs...  I was down. \n\nNow, I lie here on a rough bed, the world blurring at the edges. The pain is… significant. Yttryshuk tried to stop the blood loss, but there's not much she can do. I can hear the sounds of ongoing fighting – Flora barking, Yttryshuk shouting. Everything feels distant, unreal. Just… exhaustion.  I hope I wake up.",
+  "story_bits": [
+    "A group of hostile entities attacked the colony, resulting in significant injuries to Adrian and Yttryshuk.",
+    "Yttryshuk and Adrian downed an enemy, resulting in gunshot and fist injuries.",
+    "An ancient granite wall was partially deconstructed."
+  ],
+  "narrator_name": "Adrian",
+  "scribble": {
+    "key": "0d3715232425ec05eecb9e864a1767a9f3569e5393124cf78594197bfca04224",
+    "source_hash": "7455f48ae23c0c476e02763f7c89e45058a0b153c6df3d0e165403640774acdb",
+    "prompt": "A person lies prone on a rough bed, their body angled slightly away from a looming wall, struggling to breathe. The person’s face is drawn and pale, sweat clinging to their brow, their expression a mixture of pain and exhaustion. One hand clutches at their upper arm, where a stained cloth is pressed against a wound; a significant amount of crimson liquid pools beneath the person’s body. Above them, another figure—a guardian—kneels beside the bed, their face partially obscured, their hands pressing firmly against the person’s side, attempting to staunch the flow of crimson liquid. A yelping sound drifts in from the distance, overlaid with a shout. The room is dimly lit, the light filtering in from an unseen opening beyond the wall.",
+    "filename": "day010.scribble.0d3715232425ec05.png",
+    "workflow_hash": "35d96043f8c9cdd718db831477552d2ac3656b0daea9b31aec4c4dca05ad7529"
+  }
+}

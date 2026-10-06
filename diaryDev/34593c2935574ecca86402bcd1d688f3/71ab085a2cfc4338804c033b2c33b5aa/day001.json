@@ -1,0 +1,19 @@
+{
+  "day": 1,
+  "game_id": "34593c2935574ecca86402bcd1d688f3",
+  "session_id": "71ab085a2cfc4338804c033b2c33b5aa",
+  "model": "gemma3:12b",
+  "page_title": "Hunt and Loss",
+  "chronicle": "The chill clings to everything here, a dampness that seeps into your bones and settles there. I carried a load of wood earlier, and Flora, my husky, practically vibrated with enthusiasm, pressing against my leg, wanting a scratch. It’s… comforting, having something like her around. A small warmth in this endless expanse of white. \n\nI spent a little while going over the inventory, just to make sure everything was accounted for. It’s a habit. A compulsion, maybe. The charge rifle felt familiar in my hands; I always prefer to be prepared. The work on the walls and door was slow, each placement deliberate. I briefly dismantled a wall, a moment of frustrated inefficiency, before correcting myself. \n\nThe afternoon bled into a sky of muted gray. I stood and watched it for a while. It's not like the swirling nebulae I used to see through the viewport of a mining vessel, but it’s something. An expanse, at least.\n\nI went hunting. Needed some meat, and there were signs of ibex nearby. Managed to bring down a doe. A clean shot, I suppose, but still… there’s a hollowness that comes with it. The metallic tang of blood hangs in the air, even with the wind. I pursued a ram later, the chase long and arduous. I couldn't bring myself to face it. I had to flee, to hide. It felt...shameful.\n\nTonight, the stove needed refueling. A simple task, but necessary. A constant cycle of work and survival. This land… it demands everything.",
+  "story_bits": [
+    "Adrian killed an ibex doe with a charge rifle, resulting in gunshot wounds to the neck, right ear, and body."
+  ],
+  "narrator_name": "Adrian",
+  "scribble": {
+    "key": "8fddcf27794440ed742858086c0e6a8cf111bb46050cd204de81da56efc7dd4a",
+    "source_hash": "2baecbeb14099e240219ad69d7a86a728bae6f1baf433650ad54ee5bff9f2062",
+    "prompt": "A person kneels over a fallen doe, their posture hunched against the chill. The animal lies on the snow, a small pool of crimson blossoming around it. The person’s hands rest on their thighs, palms down, fingers slightly curled. Behind them, partially obscured by swirling snow, a large, powerfully built ram with spiraling horns lowers its head, poised to charge. The person’s shoulders are drawn forward, a visible slump in their body indicating an inward turn. A husky, its thick fur ruff bristling, sits attentively nearby, its head cocked, watching the ram with bright eyes. A faint metallic odor drifts in the muted gray light of the afternoon sky.",
+    "filename": "day001.scribble.8fddcf27794440ed.png",
+    "workflow_hash": "35d96043f8c9cdd718db831477552d2ac3656b0daea9b31aec4c4dca05ad7529"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "day": 7,
+  "game_id": "34593c2935574ecca86402bcd1d688f3",
+  "session_id": "71ab085a2cfc4338804c033b2c33b5aa",
+  "model": "gemma3:12b",
+  "page_title": "Steel and Shadows",
+  "chronicle": "The wind hasn’t let up, a constant whine across the tundra. It’s a fitting soundtrack, I suppose, for this existence. Mostly, I’ve been at the compacted steel veins today – the repetitive clang of pick against metal is a dull comfort. I managed to get a decent amount down, enough to start a new floor in my room. It’s getting cramped, and I need a little more space to...organize things. \n\nThere were conversations happening around the camp at midday – Hans and Tulyr talking about some pointless game, Mal and Yttryshuk discussing spaceships, which seemed odd given her outlook. Honestly, it's strange how she views the world. I don’t often offer advice, but I felt compelled to tell her to be cautious – there’s a… heaviness around her, a shadow that attracts trouble.  \n\nI spent the afternoon back at the steel, occasionally gathering wood when I could. It's a simple trade, wood for steel, though Hans seemed particularly eager to bargain today. It's strange, watching those Ralia people. They move like they're always being watched, always waiting for something. It makes me uneasy.\n\nSomething shifted with Yttryshuk. Suddenly, she’s a slave. The New Arrivals faction. It's a formality, I suppose, but a necessary one. Told her to keep her head down. The easiest way to survive is to be invisible. She didn't look at me when I spoke, just stared at the ground. Flora nuzzled her briefly, a small kindness in all this. \n\nSeveral of them – Nikro, Mal, Redfields – have been shadowing Hans. A pack, circling him. I don't know what he's up to, but it feels like it's leading somewhere. Finally managed to trade with Hans, secured some extra wood. Sometimes it's all about getting what you need, regardless of how it feels.  The constant movement, the watchful eyes… I’m starting to feel it, a tightening in my chest. This place… it’s not going to be easy.",
+  "story_bits": [
+    "Yttryshuk was designated as a slave within the New Arrivals faction.",
+    "Adrian traded with Hans for wood."
+  ],
+  "narrator_name": "Adrian",
+  "scribble": {
+    "key": "74f2f636ba1cc0b6317d69c7a4c523665055a32c89727b3d21d83b50a0f957b3",
+    "source_hash": "dd27e5aa50b0a966ce7e407f3e7f9f46d484fa933c92cbdc321865b66f7cafc4",
+    "prompt": "A person, clad in simple work clothes, kneels before a vein of compacted steel protruding from the frozen tundra. The individual wields a pickaxe, poised above the metal with a slow, deliberate swing. A small, furry creature—an animal that offers emotional support—nuzzles briefly against the person’s leg. Several piles of freshly-gathered wood sit nearby, stacked in neat rows. The person’s face is partially obscured by the low angle of the sun, which casts long shadows across the icy ground. A group of figures, observing from a short distance, stand in the background, their posture suggesting careful consideration. The sky is overcast, and a biting wind whips across the landscape.",
+    "filename": "day007.scribble.74f2f636ba1cc0b6.png",
+    "workflow_hash": "35d96043f8c9cdd718db831477552d2ac3656b0daea9b31aec4c4dca05ad7529"
+  }
+}

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RimLLM · Diary</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { min-height: 100vh; margin: 0; background: radial-gradient(ellipse at 50% 0, #f7f2e8 0, #ece7dc 58%); color: #332e26; font-family: Georgia, 'Times New Roman', serif; }
+  header { max-width: 900px; margin: 0 auto; padding: 48px 30px 27px; }
+  .brand { display: flex; align-items: center; gap: 10px; font: 11px system-ui, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: #756650; }
+  .brand::before { content: ''; width: 22px; height: 1px; background: #a48b62; }
+  h1 { font-size: clamp(36px, 6vw, 52px); font-weight: normal; letter-spacing: -.045em; margin: 14px 0 8px; }
+  .intro { margin: 0 0 23px; color: #827866; font: 14px/1.6 system-ui, sans-serif; }
+  .controls, nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  label, button, select, #position, #status { font: 13px system-ui, sans-serif; }
+  .controls label, nav label { color: #817662; }
+  select, button { background: rgba(255, 252, 245, .8); color: inherit; border: 1px solid #d4c9b5; border-radius: 4px; padding: 9px 11px; }
+  select { max-width: 100%; }
+  button { cursor: pointer; transition: background .16s ease, border-color .16s ease, transform .16s ease; }
+  button:hover:enabled { background: #eee6d6; border-color: #b8a887; }
+  button:active:enabled { transform: translateY(1px); }
+  button:disabled { opacity: .4; cursor: default; }
+  a { color: #76603e; text-underline-offset: 3px; }
+  a:hover { color: #4b3d28; }
+  .controls > a { margin-left: auto; font: 13px system-ui, sans-serif; }
+  :focus-visible { outline: 2px solid #80643e; outline-offset: 3px; }
+  main { max-width: 840px; min-height: 460px; margin: 0 auto 56px; background: #fffdf8; padding: 28px 68px 58px; border: 1px solid #ded5c5; box-shadow: 0 22px 65px rgba(64, 50, 30, .09); }
+  nav { border-bottom: 1px solid #ebe4d8; padding-bottom: 21px; }
+  #position { margin-left: auto; color: #8b806e; font-variant-numeric: tabular-nums; }
+  h2 { font-size: clamp(29px, 4vw, 37px); font-weight: normal; letter-spacing: -.035em; margin: 39px 0 20px; }
+  #text { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 19px; line-height: 1.9; color: #b6a287; }
+  #signature { text-align: right; font-size: 19px; font-style: italic; color: #756650; overflow-wrap: anywhere; margin: 24px 0 0; }
+  #scribble { float: right; display: block; width: min(38%, 250px); max-height: 260px; height: auto; object-fit: contain; margin: 0 0 20px 28px; padding: 8px; border: 1px solid #e8e0d2; background: #f8f4eb; box-shadow: 0 8px 24px rgba(64, 50, 30, .08); mix-blend-mode: multiply; }
+  #scribble[hidden] { display: none; }
+  #status { color: #756650; line-height: 1.6; }
+  #status:empty { display: none; }
+  @media (max-width: 600px) {
+    header { padding: 30px 21px 20px; }
+    .controls { gap: 8px; }
+    .controls > a { margin-left: 0; }
+    main { min-height: 0; margin: 0 10px 24px; padding: 20px 23px 36px; }
+    nav { gap: 8px; }
+    #position { width: 100%; margin: 2px 0 0; }
+    h2 { margin-top: 30px; }
+    #text { font-size: 18px; line-height: 1.82; }
+    #scribble { float: none; width: min(68%, 250px); max-height: 230px; margin: 0 auto 24px; }
+  }
+</style>
+<link rel="stylesheet" href="theme.css">
+<header>
+  <div class="brand">RimLLM</div>
+  <h1>The colony diary</h1>
+  <p class="intro">A 10 day tragedy of Adrian and his husky Flora.</p>
+  <div class="controls">
+    <label for="diary">Diary</label><select id="diary" aria-label="Story"></select>
+    <button id="refresh" disabled>Refresh</button>
+    <a href="/">Go back</a>
+  </div>
+</header>
+<main>
+  <nav aria-label="Diary pages">
+    <button id="previous" disabled>← Previous</button>
+    <label for="day">Page</label><select id="day" disabled></select>
+    <button id="next" disabled>Next →</button>
+    <span id="position"></span>
+  </nav>
+  <p id="status" role="status">Loading diary…</p>
+  <article><h2 id="heading"></h2><img id="scribble" alt=""><div id="text"></div><p id="signature"></p></article>
+</main>
+<script>
+  const element = id => document.getElementById(id);
+  let diaries = [], page = 0;
+  const selected = () => diaries[Number(element('diary').value)];
+  const pageLabel = entry => entry.kind === 'prologue' ? 'Prologue' : `Day ${entry.day}${entry.page_title ? ' — ' + entry.page_title : ''}`;
+  function showPage() {
+    const entries = selected()?.entries || [];
+    const entry = entries[page];
+    element('heading').textContent = entry ? pageLabel(entry) : '';
+    element('text').textContent = entry?.text || '';
+    element('signature').textContent = entry?.narrator_name ? `-${entry.narrator_name}` : '-Adrian';
+    element('signature').hidden = false;
+    const scribble = element('scribble');
+    scribble.hidden = true;
+    scribble.removeAttribute('src');
+    scribble.onload = () => { scribble.hidden = false; };
+    scribble.onerror = () => { scribble.hidden = true; };
+    if (entry?.image_url) {
+      scribble.alt = `Illustration for ${pageLabel(entry)}`;
+      scribble.src = entry.image_url;
+    }
+    element('position').textContent = entry ? `${page + 1} / ${entries.length}` : '';
+    element('day').value = String(page);
+    element('previous').disabled = !entry || page === 0;
+    element('next').disabled = !entry || page === entries.length - 1;
+  }
+  function chooseDiary(savedDay) {
+    const entries = selected()?.entries || [];
+    element('diary').title = selected() ? `Game ${selected().game} / Timeline ${selected().timeline}` : '';
+    element('day').replaceChildren(...entries.map((entry, i) => new Option(pageLabel(entry), i)));
+    element('day').disabled = !entries.length;
+    page = Math.max(0, entries.findIndex(entry => entry.day === savedDay));
+    showPage();
+  }
+  async function loadBundledStory(storyId) {
+    if (!/^[a-f0-9]{32}$/i.test(storyId)) throw new Error('Invalid story ID');
+    const root = `./${encodeURIComponent(storyId)}/71ab085a2cfc4338804c033b2c33b5aa`;
+    const bookResponse = await fetch(`${root}/book.json`);
+    if (!bookResponse.ok) throw new Error('Story not found');
+    const book = await bookResponse.json();
+    const entries = [];
+    const prologueResponse = await fetch(`${root}/prologue.json`);
+    if (prologueResponse.ok) {
+      const prologue = await prologueResponse.json();
+      entries.push({ kind: 'prologue', day: 0, page_title: prologue.page_title, text: prologue.chronicle });
+    }
+    for (let day = 1; day <= 20; day++) {
+      const response = await fetch(`${root}/day${String(day).padStart(3, '0')}.json`);
+      if (response.status === 404) break;
+      if (!response.ok) throw new Error('Unable to load story pages');
+      const data = await response.json();
+      let scribble = data.scribble;
+      if (!scribble) {
+        const scribbleResponse = await fetch(`${root}/day${String(day).padStart(3, '0')}.scribble.json`);
+        if (scribbleResponse.ok) scribble = await scribbleResponse.json();
+      }
+      entries.push({
+        day: data.day,
+        page_title: data.page_title,
+        text: data.chronicle,
+        image_url: scribble?.filename ? `${root}/${encodeURIComponent(scribble.filename)}` : ''
+      });
+    }
+    diaries = [{
+      title: book.title || 'The colony diary', game: storyId,
+      timeline: book.opening?.session_id || '',
+      entries
+    }];
+    element('diary').replaceChildren(new Option(book.title || 'The colony diary', '0'));
+    element('diary').disabled = true;
+    element('status').textContent = entries.length ? '' : 'No pages found for this story.';
+    chooseDiary();
+  }
+
+  async function refresh() {
+    const old = selected(), savedDay = old?.entries[page]?.day;
+    element('refresh').disabled = true;
+    try {
+      const storyId = new URLSearchParams(location.search).get('story');
+      if (storyId) {
+        await loadBundledStory(storyId);
+        return;
+      }
+      const response = await fetch('/diaries');
+      if (!response.ok) throw new Error('Unable to load diary');
+      diaries = await response.json();
+      element('diary').replaceChildren(...diaries.map((diary, i) => {
+        const option = new Option(diary.title || 'The colony diary', i);
+        option.title = `Game ${diary.game} · Timeline ${diary.timeline}`;
+        return option;
+      }));
+      element('diary').disabled = !diaries.length;
+      element('diary').value = String(Math.max(0, diaries.findIndex(diary => diary.game === old?.game && diary.timeline === old?.timeline)));
+      element('status').textContent = diaries.length ? '' : 'No entries yet. Run generate_chronicles.py, then refresh.';
+      chooseDiary(savedDay);
+    } catch (error) {
+      element('status').textContent = 'Could not load entries. Check that host_frontend.py is running, then refresh.';
+    } finally { element('refresh').disabled = false; }
+  }
+  element('diary').onchange = () => chooseDiary();
+  element('day').onchange = event => { page = Number(event.target.value); showPage(); };
+  element('previous').onclick = () => { page--; showPage(); };
+  element('next').onclick = () => { page++; showPage(); };
+  element('refresh').onclick = refresh;
+  refresh();
+</script>
+</html>

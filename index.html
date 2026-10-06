@@ -298,6 +298,8 @@
     border: 1px solid var(--border);
     border-radius: 4px;
   }
+  .demo-story-link { display: inline-flex; align-items: center; gap: 8px; margin: 0 18px 18px; padding: 10px 13px; border: 1px solid var(--border-strong); border-radius: 4px; color: var(--text); text-decoration: none; font-family: var(--mono); font-size: 11px; }
+  .demo-story-link:hover { background: var(--tag-bg); }
   .demo-modal-footer { min-height: 64px; padding: 0 22px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .demo-dots { display: flex; gap: 7px; }
   .demo-dot { width: 18px; height: 18px; border: 0; background: transparent; cursor: pointer; position: relative; }
@@ -522,7 +524,10 @@
             <span class="tag">RAG</span>
             <span class="tag">SQL</span>
           </div>
-          <span class="project-link">repo private for now</span>
+          <a class="project-link" href="https://github.com/vsalli12/RimLLM" target="_blank">
+            View project on GitHub
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+          </a>
         </div>
         <div class="project-video">
           <button class="demo-launch" id="rimllm-demo-trigger" type="button" aria-haspopup="dialog" aria-controls="rimllm-demo">
@@ -923,6 +928,13 @@ The chill here bites deeper than any asteroid I've worked. Flora, bless her thic
       content.prepend(stageImage);
     }
     output.append(bar, content);
+    if (stage.type === 'diary') {
+      const storyLink = document.createElement('a');
+      storyLink.className = 'demo-story-link';
+      storyLink.href = 'diaryDev/diary.html?story=34593c2935574ecca86402bcd1d688f3';
+      storyLink.textContent = 'Read Adrian’s full story →';
+      output.append(storyLink);
+    }
     output.scrollTop = 0;
 
     [...demoProgress.children].forEach((item, i) => {

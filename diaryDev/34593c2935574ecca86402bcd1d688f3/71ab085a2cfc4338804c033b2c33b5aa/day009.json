@@ -1,0 +1,20 @@
+{
+  "day": 9,
+  "game_id": "34593c2935574ecca86402bcd1d688f3",
+  "session_id": "71ab085a2cfc4338804c033b2c33b5aa",
+  "model": "gemma3:12b",
+  "page_title": "Yttryshuk's Shadows",
+  "chronicle": "The chill clings deeper than the frost today, a persistent dampness that settles in the bones. I spent the early hours wrestling with the wood-fired generator again – it feels like a constant battle against the elements and the inefficiency of the thing. At least it keeps the stove going, which means I could get some food prepared. \n\nMostly, the day revolved around Yttryshuk. She’s… a curious presence. She moves with a sort of weary grace as she tends the rice, harvesting and replanting with a quiet diligence. Our conversations are peculiar; cedars, sweating, pumpkins – random tangents that bounce off each other. It’s almost…companionable, in a detached sort of way. I try to be amiable, I truly do. But there's a tension there, a knowledge that her position as a slave necessitates a certain…management. I can't afford any disruption. I warned her, softly, about disobedience. Some things are best left unsaid, yet must be known. Her waiting afterward felt unsettling.\n\nThe brief attempt to suppress her felt… necessary. It’s not a pleasant task, but stability demands a certain level of control. It's a burden, really. The growling in my gut isn't just hunger; it's the weight of responsibility. The glimpse of a rotting corpse earlier – a grim reminder of what can happen when things unravel. It stirs a feeling in me, a sense of needing to hoard, to protect, to control. Not just resources, but order itself. \n\nLater, more rice, more fuel for the generator, more food. It’s a rhythm, a constant cycle of work and provision. This colony… it's fragile. It needs to be strong. I need to be strong.",
+  "story_bits": [
+    "Adrian and Yttryshuk engaged in several conversations throughout the day, discussing varied topics.",
+    "Adrian attempted to suppress Yttryshuk, indicating an ongoing effort to maintain control over the slave."
+  ],
+  "narrator_name": "Adrian",
+  "scribble": {
+    "key": "e33e3e63621050a4c03382c91241c5bff69925a789bb1eb1da835c78e22d061f",
+    "source_hash": "03ca8fc5304d5cca51f0ec64b467886fd202c62f278e67e37a86a3fca770cf55",
+    "prompt": "A person kneels beside a low table laden with rice, meticulously separating grains with slender fingers. The individual wears simple, functional clothing, the fabric dark and worn. Across the room, next to a bulky, manually-fed wood-fired generator, a second person stands, their posture rigid, observing. Light from a single window illuminates the scene, revealing dust motes dancing in the air. A palpable stillness hangs between them, the air thick with unspoken weight. A dull, metallic scent permeates the room, mingling with the earthy fragrance of the rice. The person by the table displays a posture that denotes obedience, while the observing person has a visible tension in their shoulders.",
+    "filename": "day009.scribble.e33e3e63621050a4.png",
+    "workflow_hash": "35d96043f8c9cdd718db831477552d2ac3656b0daea9b31aec4c4dca05ad7529"
+  }
+}

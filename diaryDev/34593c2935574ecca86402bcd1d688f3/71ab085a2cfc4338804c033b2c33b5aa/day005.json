@@ -1,0 +1,21 @@
+{
+  "day": 5,
+  "game_id": "34593c2935574ecca86402bcd1d688f3",
+  "session_id": "71ab085a2cfc4338804c033b2c33b5aa",
+  "model": "gemma3:12b",
+  "page_title": "Steel and Parkas",
+  "chronicle": "The chill still bites, even with the sun trying to peek through the overcast. It felt good to get back to the mining face this morning after yesterday’s… unpleasantness. Flora, ever the comforting presence, nuzzled against my leg as I ate my simple meal. It’s a small thing, but those moments matter out here. The steel vein is proving rich, denser than anything I’ve encountered before. The clang of my pick against the compacted metal is a strangely satisfying rhythm, a small victory against this barren place. I spent a good portion of the day hacking away at it. \n\nI managed a stint at the tailor’s bench this morning, patching together a parka from what scraps I could find. The finished product isn’t pretty, no doubt, but it’ll offer some protection from the wind. Hauling the sandstone to the shelf alongside the other supplies felt like a worthwhile addition to our dwindling stores. Later, I noticed a grime of blood on my hands, lingering from a scrape I hadn't registered earlier. A quick clean-up and a plunge into the water cleared it, momentarily chasing away the creeping discomfort. That water is cold, shockingly so, but it’s bracing. Afterwards, I even noticed Nobu had changed affiliations, joining the New Arrivals colony - a rather odd development. Just another strange thing to catalogue in this place. I just hope we can find a way to make a genuinely decent bedroom out of here. It’s so…ugly.",
+  "story_bits": [
+    "A hare was tamed and designated Hare 1.",
+    "Adrian constructed a patchleather parka.",
+    "Nobu joined the New Arrivals faction."
+  ],
+  "narrator_name": "Adrian",
+  "scribble": {
+    "key": "37a7fc2fd3244bbc8b098178047c2e43e9edb5b5e5e0589bd70152619408f843",
+    "source_hash": "9d9788221b0959576b4768214785af4cb41e419133836c818716efc104b3efc4",
+    "prompt": "A person swings a pickaxe against a dense, silvery steel vein in a darkened mining face. The person is clad in a roughly-assembled parka constructed from mismatched scraps of fabric. The pickaxe’s impact sends small metallic shavings scattering across the dusty ground. To the person’s right, a small, quadrupedal creature, exhibiting characteristics consistent with a *grublin*, nuzzles their leg, its form compact and low to the ground. Behind the person, a triple-stack shelf holds various supplies, the stone surrounding the shelf face revealing compacted sandstone. The light source, diffused by overcast skies, illuminates the scene with a cool, grey light, highlighting the metallic sheen of the steel and the grime on the person’s hands.",
+    "filename": "day005.scribble.37a7fc2fd3244bbc.png",
+    "workflow_hash": "35d96043f8c9cdd718db831477552d2ac3656b0daea9b31aec4c4dca05ad7529"
+  }
+}

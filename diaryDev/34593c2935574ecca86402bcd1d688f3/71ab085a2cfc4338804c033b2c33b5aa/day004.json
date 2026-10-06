@@ -1,0 +1,20 @@
+{
+  "day": 4,
+  "game_id": "34593c2935574ecca86402bcd1d688f3",
+  "session_id": "71ab085a2cfc4338804c033b2c33b5aa",
+  "model": "gemma3:12b",
+  "page_title": "Wolf's Price",
+  "chronicle": "The day started like any other, with a handful of tasteless rations and the ever-present chill that seemed to seep into the bones despite the meager fire. Hauling supplies, tinkering with the stove – the usual rhythm of survival. Thankfully, the scratches from that grizzly a few days ago finally faded, a minor victory in this harsh land. I even managed a bit of hunting, although the ibex population seems stubbornly sparse. \n\nThe afternoon brought a surprise – or rather, a violent interruption. A wild greatwolf, a beast bigger than any I'd seen before, attacked a poor outsider, Humps. The commotion drew me out; the sight of the greatwolf tearing into the man was…unpleasant. It injured him badly before he fell. It was a brutal fight, and there was nothing I could do to help. I dispatched the wolf quickly enough, a clean cut to its throat, but the cost… it's unsettling. He was a knight, from some tribe. I'll never know his story. I spent the rest of the afternoon hauling and repairing damage. The evening was quiet, another meal by the stove, some stitching at the tailor's bench, trying to keep busy. It’s strange, this need to keep *doing* when the quiet feels like it’s pressing down.\n\nI can almost feel the dust of Old Earth clinging to me still, a constant reminder of everything lost. But the weight of it’s lessened somewhat; a hard day’s work can numb the edges of grief, however briefly. Tonight, though, the chill feels deeper, the shadows longer. I can't shake the image of the greatwolf's death throes, or the feeling that I’ve paid a price for this scrap of land.",
+  "story_bits": [
+    "A greatwolf was killed during an attack, inflicting injuries on an outsider named Humps who subsequently died.",
+    "An outsider, Humps, a dromedary knight from the Tribe of Enbiar, arrived at the colony yesterday and died today."
+  ],
+  "narrator_name": "Adrian",
+  "scribble": {
+    "key": "cc40c885aba2d711421679824b61ff9eadc31767ca274a4113958c61b2b80b27",
+    "source_hash": "cc979bbb54bf4275470dbf1f88011bcff7fa8360d5f7f658c5871d347efc8f47",
+    "prompt": "A person kneels beside a fallen figure; the person holds a long, sharpened tool with a slick surface, droplets clinging to the edge. The person’s shoulders are hunched, posture suggesting fatigue and grim resolve. The figure, a knight, lies prone on rough, rocky ground, armor dented and stained a dark hue. The knight’s limbs are twisted at unnatural angles, and a thick, dark blood soaks the surrounding stone. Nearby, the greatwolf’s massive form lies still, its heavy, corded muscles slack, a deep gash visible at its throat. The area is dimly lit by a flickering fire in the distant background, casting elongated shadows from scrubby vegetation and scattered boulders. A simple tailor's bench sits a short distance away.",
+    "filename": "day004.scribble.cc40c885aba2d711.png",
+    "workflow_hash": "35d96043f8c9cdd718db831477552d2ac3656b0daea9b31aec4c4dca05ad7529"
+  }
+}

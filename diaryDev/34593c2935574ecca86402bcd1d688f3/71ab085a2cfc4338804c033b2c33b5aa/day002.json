@@ -1,0 +1,20 @@
+{
+  "day": 2,
+  "game_id": "34593c2935574ecca86402bcd1d688f3",
+  "session_id": "71ab085a2cfc4338804c033b2c33b5aa",
+  "model": "gemma3:12b",
+  "page_title": "Ancient Echoes",
+  "chronicle": "The chill bites deeper here than any asteroid I've ever mined. It seeps into your bones, a constant reminder of the unforgiving landscape. Today was a flurry of routine, punctuated by moments that left a lingering unease. I spent the morning building a steel shelf – something to keep things organized, a small measure of control in this chaotic place. It feels good to build, to create order. Then the hauling started; sandstone, ibex meat, some plainleather, wood, and those survival meals I’m trying to ration. Flora, bless her, nuzzled my leg during all the commotion. A small comfort in a world that demands so much. \n\nAround midday, something shifted. A flash of movement, a guttural growl… then a struggle. A wolverine – a snarling, vicious thing – fell before it could do serious harm, though I’m not sure what brought it on. It died soon after. I feel… regret. They’re part of this place, wild and untamed, and I took one from it. A little later, while hauling, I stumbled upon something else entirely. Half-buried in the tundra, a monolith. Ancient, weathered, a silent sentinel from a time long gone. It hummed with a strange energy, a weight of history I couldn't quite place. \n\nThe afternoon bled into the long hours of twilight, filled with the familiar rhythm of harvesting and sowing. Grass, potatoes, rice – the cycle of life and death plays out relentlessly. I cut down trees, birch and pine, then sowed rice again, a futile attempt to tame this land. Every harvest feels like a victory, a small defiance against the elements. The repetition is… grounding. Tonight, the cold settles deeper than before, and the monolith's silent gaze lingers at the edge of my thoughts.",
+  "story_bits": [
+    "A wolverine was killed during a brief encounter.",
+    "An ancient monolith was discovered, partially buried in the tundra."
+  ],
+  "narrator_name": "Adrian",
+  "scribble": {
+    "key": "78773b592bea8077f4d25137047c6757a7d0fb5ead17fddb66ff15dd74a812c1",
+    "source_hash": "694c4a765ac7346b12cfd8b1e5022a1ab88d29335d3a4ba329d7083d55ae7823",
+    "prompt": "A person kneels on the frosted ground, hands resting on a cool, weathered monolith jutting from the tundra. The stone is dark gray, scarred with age and etched with faint, swirling patterns. The person is clad in practical, layered clothing of muted browns and grays, their posture suggesting a moment of quiet contemplation. Around the monolith’s base, a sparse scattering of dry grasses struggles against the icy wind. The sky is a deepening twilight, casting long shadows across the flat expanse and illuminating a dusting of snow on the monolith’s surface. Beyond the monolith, a distant line of birch and pine trees stands stark against the fading light, and to the person’s right, a small pile of harvested rice sits on the frozen ground.",
+    "filename": "day002.scribble.78773b592bea8077.png",
+    "workflow_hash": "35d96043f8c9cdd718db831477552d2ac3656b0daea9b31aec4c4dca05ad7529"
+  }
+}

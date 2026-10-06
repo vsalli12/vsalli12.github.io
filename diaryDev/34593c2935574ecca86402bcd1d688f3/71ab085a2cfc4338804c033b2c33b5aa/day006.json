@@ -1,0 +1,21 @@
+{
+  "day": 6,
+  "game_id": "34593c2935574ecca86402bcd1d688f3",
+  "session_id": "71ab085a2cfc4338804c033b2c33b5aa",
+  "model": "gemma3:12b",
+  "page_title": "After the Raid",
+  "chronicle": "The air still feels thick with the scent of burnt metal and something else… acrid. It was a chaotic night. Those Toxin Band scum came at us like flies, and one of them, a woman named Engie, was particularly eager to cause trouble. She tried to set a heater ablaze, then went for a steel wall – as if *that* would be an effective tactic. I managed to wound her with the charge rifle, sending several bolts straight in. Heard she passed away this morning. A waste. At least she won’t be bothering us anymore. \n\nToday was mostly routine, I suppose. Spent a good chunk of the morning preparing food, working at the stove – got to keep the stores full. Then back to the mining, hauling compacted steel. It’s backbreaking work, but the vein I'm working is proving quite rich. A wood-fired generator and a wall lamp are also underway. Needed to refuel the generator too, of course. It feels good to accomplish something, however small. There's always something to build, something to improve. \n\nEngie, bless her heart, tried to attack me again last night. More static attacks, though thankfully minor. I managed to strip her, extinguish the fires she'd started, and she seemed to suffer some blood loss. She’s gone now, so I don’t have to worry about her shenanigans. \n\nFlora gave me a quick head-butt this afternoon, a rare show of affection. It almost makes the endless digging worthwhile. Then there were Nikro and Dixon, having a conversation about recreation. Some of them seem to think having fun is important. I suppose it is, in its own way. \n\nLater, a caravan of slavers from Ralia showed up. Just hung around for a while before leaving. Another reminder of the dangers out there, and the value of what I’m building here.",
+  "story_bits": [
+    "A raider, Engie, attempted to ignite a heater and a steel wall during a raid.",
+    "Adrian killed raider Engie with a charge rifle, inflicting gunshot injuries.",
+    "A caravan of slavers from Ralia briefly visited the colony."
+  ],
+  "narrator_name": "Adrian",
+  "scribble": {
+    "key": "5eeaa50dea505d7b141b3d299c78442a641463524c184525164af8cb93a1b71c",
+    "source_hash": "c08d6dd814b5b518116b586b9ae34f82c12fa156634a708277c46a328f5e7b15",
+    "prompt": "A person kneels beside a wood-fired generator, replenishing the fuel stores with a stack of logs. The generator’s dark metal casing contrasts with the rough-hewn timbers of the logs, and a yellow light spills from a nearby wall lamp mounted on the gray steel wall. Behind the person, a vein of compacted steel, visible in the rough excavation, glistens faintly. The person’s posture is slightly hunched, suggesting exertion, and their back is to a smaller, quadrupedal creature with dull grey, segmented carapace, which nudges their lower back with a brief head-butt. The overall lighting is dim but warm, and the air hangs still with the scent of woodsmoke.",
+    "filename": "day006.scribble.5eeaa50dea505d7b.png",
+    "workflow_hash": "35d96043f8c9cdd718db831477552d2ac3656b0daea9b31aec4c4dca05ad7529"
+  }
+}
