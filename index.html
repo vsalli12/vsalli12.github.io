@@ -210,6 +210,54 @@
 
   .video-placeholder svg { color: var(--text-muted); width: 20px; height: 20px; opacity: 0.4; }
 
+  /* Reusable inline project context */
+  .context-trigger {
+    display: inline; padding: 0; border: 0; background: none; color: #915252;
+    font: inherit; font-weight: 400; text-decoration: none; cursor: pointer;
+  }
+  .context-trigger:focus-visible, .context-close:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+  .project-context {
+    width: min(780px, calc(100vw - 32px)); max-width: none;
+    max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px);
+    margin: auto; padding: 0; border: 1px solid var(--border-strong); border-radius: 10px;
+    background: var(--surface); color: var(--text); overflow: auto;
+    box-shadow: 0 28px 80px rgba(0,0,0,0.35);
+  }
+  .project-context::backdrop { background: rgba(0,0,0,0.65); backdrop-filter: blur(4px); }
+  .project-context[open] { animation: fadeUp 0.4s ease; }
+  .project-context[open]::backdrop { animation: contextBackdropIn 0.25s ease; }
+  @keyframes contextBackdropIn { from { opacity: 0; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .project-context[open], .project-context[open]::backdrop { animation: none; }
+  }
+  .context-close {
+    position: absolute; top: 14px; right: 14px; z-index: 2;
+    width: 34px; height: 34px; display: grid; place-items: center;
+    border: 1px solid rgba(255,255,255,0.25); border-radius: 50%;
+    background: rgba(12,16,19,0.7); color: #fff; cursor: pointer;
+  }
+  .context-close:hover { background: rgba(12,16,19,0.95); }
+  .context-close:focus-visible { outline-color: #fff; }
+  .context-close svg { width: 14px; height: 14px; }
+  .context-hero { position: relative; isolation: isolate; background: #111b20; }
+  .context-hero img { display: block; width: 100%; height: auto; object-fit: cover; }
+  .context-hero::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(transparent 45%, rgba(8,14,18,0.88));
+  }
+  .context-heading { position: absolute; bottom: 24px; left: 28px; right: 28px; z-index: 1; color: #fff; }
+  .context-kicker { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; margin-bottom: 6px; }
+  .context-heading h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; }
+  .context-copy { padding: 24px 28px 28px; }
+  .context-copy h3 { font-size: 18px; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .context-copy p { font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; }
+  .context-copy p + p { margin-top: 12px; }
+  .context-copy .context-project-note {
+    border-top: 1px solid #915252;
+    padding-top: 14px;
+    color: #915252;
+  }
+
   /* RIMLLM INTERACTIVE DEMO */
   .demo-launch {
     width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--border); border-radius: 6px;
@@ -230,7 +278,7 @@
   }
   .demo-launch:hover { border-color: var(--border-strong); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.07); }
   .demo-launch:hover::before { opacity: calc(var(--demo-image-opacity) + 0.04); transform: scale(1.015); }
-  .demo-launch:focus-visible, .demo-control:focus-visible, .demo-close:focus-visible, .demo-dot:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+  .demo-launch:focus-visible, .demo-control:focus-visible, .demo-close:focus-visible, .demo-dot:focus-visible, .demo-progress-step:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
   .demo-launch-top, .demo-launch-cta { display: flex; align-items: center; justify-content: space-between; }
   .demo-launch-kicker, .demo-launch-count { font-family: var(--mono); font-size: 9px; font-weight: 500; color: var(--text-secondary); letter-spacing: 0.1em; text-transform: uppercase; }
   .demo-launch-title { font-family: var(--mono); font-size: 14px; font-weight: 400; letter-spacing: -0.02em; }
@@ -242,14 +290,15 @@
   .demo-backdrop { position: fixed; inset: 0; z-index: 110; background: rgba(0,0,0,0.62); opacity: 0; visibility: hidden; transition: opacity 0.22s ease, visibility 0.22s ease; }
   .demo-backdrop.visible { opacity: 1; visibility: visible; }
   .demo-modal {
-    position: fixed; z-index: 111; top: 50%; left: 50%; width: min(900px, calc(100vw - 40px));
-    height: min(620px, calc(100vh - 40px)); transform: translate(-50%, -48%) scale(0.985);
+    /* Avoid scaling tiny indicators so state changes do not shift their rasterization. */
+    position: fixed; z-index: 111; inset: 0; margin: auto; width: min(900px, calc(100vw - 40px));
+    height: min(620px, calc(100vh - 40px));
     border: 1px solid var(--border-strong); border-radius: 10px; background: var(--bg);
     padding: 0; overflow: hidden;
     box-shadow: 0 28px 80px rgba(0,0,0,0.32); display: flex; flex-direction: column;
-    opacity: 0; visibility: hidden; transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+    opacity: 0; visibility: hidden; transition: opacity 0.22s ease, visibility 0.22s ease;
   }
-  .demo-modal.visible { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+  .demo-modal.visible { opacity: 1; visibility: visible; }
   .demo-modal-header { min-height: 58px; padding: 0 18px 0 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
   .demo-modal-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
   .demo-modal-brand strong { font-family: var(--mono); font-size: 12px; font-weight: 500; }
@@ -258,14 +307,14 @@
   .demo-close:hover { background: var(--tag-bg); color: var(--text); }
   .demo-close svg { width: 16px; height: 16px; }
   .demo-progress { padding: 18px 24px 0; display: grid; grid-template-columns: repeat(8, 1fr); }
-  .demo-progress-step { position: relative; text-align: center; }
+  .demo-progress-step { appearance: none; display: block; min-width: 0; padding: 0; border: 0; background: transparent; font: inherit; position: relative; text-align: center; cursor: pointer; }
   .demo-progress-step::before { content: ''; position: absolute; top: 5px; left: 0; width: 100%; height: 1px; background: var(--border); }
   .demo-progress-step:first-child::before { left: 50%; width: 50%; }
   .demo-progress-step:last-child::before { width: 50%; }
-  .demo-progress-node { position: relative; z-index: 1; width: 11px; height: 11px; margin: 0 auto 7px; border: 2px solid var(--bg); border-radius: 50%; background: var(--border-strong); box-shadow: 0 0 0 1px var(--border); transition: background 0.18s ease, box-shadow 0.18s ease; }
+  .demo-progress-node { display: block; position: relative; z-index: 1; width: 11px; height: 11px; margin: 0 auto 7px; border: 2px solid var(--bg); border-radius: 50%; background: var(--border-strong); box-shadow: 0 0 0 1px var(--border); transition: background 0.18s ease, box-shadow 0.18s ease; }
   .demo-progress-step.complete .demo-progress-node, .demo-progress-step.active .demo-progress-node { background: var(--text); box-shadow: 0 0 0 1px var(--text); }
-  .demo-progress-label { font-family: var(--mono); font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-  .demo-progress-step.active .demo-progress-label { color: var(--text); }
+  .demo-progress-label { display: block; font-family: var(--mono); font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .demo-progress-step.active .demo-progress-label, .demo-progress-step:hover .demo-progress-label { color: var(--text); }
   .demo-stage { flex: 1; min-height: 0; padding: 26px 34px 22px; display: grid; grid-template-columns: 0.78fr 1.55fr; gap: 34px; align-items: start; }
   .demo-stage-info { padding-top: 4px; min-width: 0; }
   .demo-stage-number { font-family: var(--mono); font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
@@ -301,9 +350,9 @@
   .demo-story-link { display: inline-flex; align-items: center; gap: 8px; margin: 0 18px 18px; padding: 10px 13px; border: 1px solid var(--border-strong); border-radius: 4px; color: var(--text); text-decoration: none; font-family: var(--mono); font-size: 11px; }
   .demo-story-link:hover { background: var(--tag-bg); }
   .demo-modal-footer { min-height: 64px; padding: 0 22px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .demo-dots { display: flex; gap: 7px; }
-  .demo-dot { width: 18px; height: 18px; border: 0; background: transparent; cursor: pointer; position: relative; }
-  .demo-dot::after { content: ''; position: absolute; inset: 6px; border-radius: 50%; background: var(--border-strong); }
+  .demo-dots { display: flex; align-items: center; gap: 7px; }
+  .demo-dot { appearance: none; -webkit-appearance: none; display: grid; place-items: center; flex: 0 0 18px; width: 18px; height: 18px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+  .demo-dot::after { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--border-strong); }
   .demo-dot.active::after { background: var(--text); }
   .demo-actions { display: flex; gap: 8px; }
   .demo-control { min-width: 88px; height: 34px; padding: 0 12px; border: 1px solid var(--border-strong); border-radius: 4px; background: transparent; color: var(--text-secondary); font-family: var(--mono); font-size: 11px; cursor: pointer; }
@@ -395,11 +444,13 @@
   <nav>
     <div class="nav-inner">
       <span class="nav-name">Viliam Sälli</span>
+      <!--
       <ul class="nav-links">
         <li><a href="#projects">projects</a></li>
         <li><a href="#about">about</a></li>
         <li><a href="#contact">contact</a></li>
       </ul>
+    -->
     </div>
   </nav>
 
@@ -435,8 +486,9 @@
         </div>
         <div class="project-body">
           <h3>MIMOSA: CNN particle analysis pipeline</h3>
-          <p>Automated particle dispersion analysis software featuring a convolutional neural network 
-          for batch analysis of microscopy images. Reduces per-image dispersion calculation from ~5 minutes 
+          <p>Automated <button class="context-trigger" type="button" data-context-open="dispersion" aria-haspopup="dialog" aria-controls="project-context">particle dispersion</button> analysis software featuring a convolutional neural network 
+          for batch analysis of microscopy images. 
+          Reduces per-image dispersion calculation from ~5 minutes 
           (with existing tools) to 5 seconds. Developed as part of a master's thesis.
           </p>
           <div class="tags">
@@ -465,7 +517,7 @@
         </div>
       </div>
 
-      <!-- PROJECT 03 -->
+      <!-- PROJECT 02 -->
       <div class="project">
         <div class="project-meta">
           <p class="project-number">02</p>
@@ -473,7 +525,7 @@
         </div>
         <div class="project-body">
           <h3>Nappulapeli: Chaotic Party Game</h3>
-          <p>An autobattling party game built for a friend group trip, where players control characters from an Android app while battles play out live on a shared host screen.</p>
+          <p>An overengineered autobattling party game built for a friend group trip, where players control characters from an Android app while battles play out live on a shared host screen.</p>
           <ul class="project-list">
             <li>Optimized pathfinding, rendering, and game state ticking.</li>
             <li>Custom socket server handling real-time state sync across multiple concurrent clients.</li>
@@ -507,7 +559,7 @@
         </div>
       </div>
 
-      <!-- PROJECT 04 -->
+      <!-- PROJECT 03 -->
       <div class="project">
         <div class="project-meta">
           <p class="project-number">03</p>
@@ -515,7 +567,7 @@
         </div>
         <div class="project-body">
           <h3>RimLLM: AI-Generated Colony Diaries</h3>
-          <p>A RimWorld mod that transforms raw, chaotic gameplay data into coherent daily diary entries. The system streams in-game events over WebSockets to a Python backend,
+          <p>A <button class="context-trigger" type="button" data-context-open="rimworld" aria-haspopup="dialog" aria-controls="project-context">RimWorld</button> mod that transforms raw, chaotic gameplay data into coherent daily diary entries. The system streams in-game events over sockets to a Python backend,
             stores them in SQL, filters and summarizes relevant events, and enriches them with RimWorld-specific terminology sourced automatically from the game wiki.
             A dual-pass LLM pipeline then generates consistent narrative entries, with optional AI-generated images displayed alongside them in a lightweight web app.</p>
           <div class="tags">
@@ -525,7 +577,7 @@
             <span class="tag">SQL</span>
           </div>
           <a class="project-link" href="https://github.com/vsalli12/RimLLM" target="_blank">
-            View project on GitHub
+            View on GitHub
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
           </a>
         </div>
@@ -553,7 +605,7 @@
         </div>
       </div>
 
-      <!-- PROJECT 02 -->
+      <!-- PROJECT 04 -->
       <div class="project">
         <div class="project-meta">
           <p class="project-number">04</p>
@@ -562,7 +614,7 @@
         <div class="project-body">
           <h3>CMA: Correlative microscopy analysis tool</h3>
           <p>
-            Correlative microscopy analysis tool built with another student for our thesis instructors, split across a defined frontend/backend boundary: I owned the MATLAB App Designer GUI (layout, interaction design, styling), 
+            <button class="context-trigger" type="button" data-context-open="correlative-microscopy" aria-haspopup="dialog" aria-controls="project-context">Correlative Microscopy</button> analysis tool built with another student for our thesis instructors, split across a defined frontend/backend boundary: I owned the MATLAB App Designer GUI (layout, interaction design, styling), 
             while my partner handled the backend image-processing pipeline. Coordinated work on a shared Git repository, partitioning edits and handling merges to avoid conflicts. 
           </p>
           <div class="tags">
@@ -589,7 +641,7 @@
         </div>
       </div>
 
-      <!-- PROJECT 05 -->
+      <!-- PROJECT 05 
       <div class="project">
         <div class="project-meta">
           <p class="project-number">05</p>
@@ -611,19 +663,18 @@
             <span class="tag">React</span>
           </div>
         </div>
-        
+      
         
         <div class="project-video">
           <div class="video-wrap no-zoom">
-            <!--Placeholder video for now-->
             <div class="video-placeholder">
               <span>coming soon.</span>
             </div>
           </div>
         </div>
-        
+          
       </div>
-
+      -->
     </div>
   </section>
 
@@ -656,9 +707,9 @@
         <h4>Tools</h4>
         <ul class="skills-list">
           <li>TensorFlow</li>
+          <li>Torch</li>
           <li>OpenCV</li>
           <li>NumPy</li>
-          <li>Git</li>
         </ul>
         <h4>Areas</h4>
         <ul class="skills-list">
@@ -695,6 +746,61 @@
   </footer>
 </div>
 
+<!-- Shared dialog for all context templates. -->
+<dialog class="project-context" id="project-context" aria-labelledby="project-context-title">
+  <button class="context-close" id="project-context-close" type="button" aria-label="Close context" autofocus>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>
+  </button>
+  <div id="project-context-content"></div>
+</dialog>
+<!-- RIMWORLD CONTEXT. -->
+<template id="context-rimworld">
+  <div class="context-hero">
+    <img src="videos/rimworld-boreal.jpg" width="1920" height="1080" alt="A warmly lit RimWorld colony surrounded by snow, forest, and rocky terrain.">
+    <div class="context-heading">
+      <p class="context-kicker">Additional context</p>
+      <h2 id="project-context-title">RimWorld</h2>
+    </div>
+  </div>
+  <div class="context-copy">
+    <h3>A chaotic colony sim and a story generator.</h3>
+    <p>A colony simulation game where you build and manage a settlement. The game simulates systems like relationships, combat, and health to extreme detail, which often gives rise to emergent narratives. The game however fails to retain memories of these stories.</p>
+    <p class="context-project-note">RimLLM aims to give those stories a voice, and keeps mementos of colonists the player might spend dozens of hours with.</p>
+  </div>
+</template>
+
+<!-- DISPERSION CONTEXT. -->
+<template id="context-dispersion">
+  <div class="context-hero">
+    <img src="videos/dispersion.png" width="2560" height="980" alt="A SEM image and it's particle map.">
+    <div class="context-heading">
+      <p class="context-kicker">Additional context</p>
+      <h2 id="project-context-title">Dispersion</h2>
+    </div>
+  </div>
+  <div class="context-copy">
+    <h3>Particle size distribution</h3>
+    <p>Dispersion describes how particles are distributed within a material, particularly the proportion of the imaged area occupied by particles exceeding a given size. Traditionally, measuring dispersion requires extensive manual labeling and analysis.</p>
+    <p class="context-project-note">MIMOSA automates both processes, reducing hours of manual work to minutes.</p>
+  </div>
+</template>
+
+<!-- CORRELATIVE MICROSCOPY CONTEXT. -->
+<template id="context-correlative-microscopy">
+  <div class="context-hero">
+    <img src="videos/correlative.jpg" width="2560" height="980" alt="A SEM image and it's particle map.">
+    <div class="context-heading">
+      <p class="context-kicker">Additional context</p>
+      <h2 id="project-context-title">Correlative Microscopy</h2>
+    </div>
+  </div>
+  <div class="context-copy">
+    <h3>Combining microscopy techniques</h3>
+    <p>Correlative microscopy combines images from different microscopy techniques to provide a more complete understanding of a sample. Aligning these images allows structural and compositional information to be examined together.</p>
+    <p class="context-project-note">No actual purpose built software solutions exist for this task, so we aimed to provide one.</p>
+  </div>
+</template>
+
 <div class="video-backdrop" id="backdrop"></div>
 <div class="video-expanded-wrap" id="expanded-wrap">
   <video muted loop playsinline id="expanded-video"></video>
@@ -711,7 +817,7 @@
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>
     </button>
   </header>
-  <div class="demo-progress" id="demo-progress" aria-hidden="true"></div>
+  <div class="demo-progress" id="demo-progress" role="group" aria-label="Demo stages"></div>
   <div class="demo-stage">
     <div class="demo-stage-info">
       <p class="demo-stage-number" id="demo-stage-number"></p>
@@ -730,6 +836,35 @@
 </section>
 
 <script>
+  // One accessible dialog, with project-specific content supplied by templates.
+  const contextDialog = document.getElementById('project-context');
+  const contextContent = document.getElementById('project-context-content');
+  let contextOpener = null;
+  let contextPreviousOverflow = '';
+
+  document.querySelectorAll('[data-context-open]').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const template = document.getElementById(`context-${trigger.dataset.contextOpen}`);
+      if (!template || contextDialog.open) return;
+      contextContent.replaceChildren(template.content.cloneNode(true));
+      contextOpener = trigger;
+      contextPreviousOverflow = document.body.style.overflow;
+      contextDialog.showModal();
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  document.getElementById('project-context-close').addEventListener('click', () => contextDialog.close());
+  contextDialog.addEventListener('click', event => {
+    if (event.target !== contextDialog) return;
+    const rect = contextDialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) contextDialog.close();
+  });
+  contextDialog.addEventListener('close', () => {
+    document.body.style.overflow = contextPreviousOverflow;
+    contextOpener?.focus();
+    contextOpener = null;
+  });
+
   const backdrop = document.getElementById('backdrop');
   const expandedWrap = document.getElementById('expanded-wrap');
   const expandedVideo = document.getElementById('expanded-video');
@@ -789,7 +924,7 @@
 
   const demoStages = [
     {
-      label: 'Ingest', title: 'Raw game events', file: 'day001.log.json', meta: 'single event (+274 more entries)', type: 'code',
+      label: 'Ingest', title: 'Raw game events', file: 'day001.log.json', meta: 'single event', type: 'code',
       description: 'The mod streams every event as it happens. At this point the data is accurate, but noisy and not yet useful as a story.',
       content: `{"schema_version": 1, "event_id": "0095127de4174b0e9a6bc14001cf0852", "playthrough_id": "34593c2935574ecca86402bcd1d688f3", "session_id": "71ab085a2cfc4338804c033b2c33b5aa", "sequence": 219, "tick": 40746, "game_day": 1, "tick_of_day": 40746, "map_id": 0, "diary_carrier_id": "Thing_Human698", "type": "pawn.injured", "participants": [{"pawn_id": "Thing_Wolverine17891", "role": "subject"}, {"pawn_id": "Thing_Hare17877", "role": "attacker"}], "data": {"details": {"injury": "Bite", "part": "body", "damage_type": "Bite"}, "subject_state": {"pawn_id": "Thing_Wolverine17891", "dead": false, "downed": false, "current_job": {"job_id": "Job_26806", "def": "PredatorHunt", "player_forced": false, "start_tick": 38901, "target_a": {"kind": "pawn", "thing_id": "Thing_Hare17877", "def": "Hare", "label": "hare", "map_id": 0}, "target_b": null, "target_c": null}, "is_prisoner": false, "is_slave": false, "map_id": 0, "mood": null, "mental_state": null, "mood_contributors": [], "health": [{"def": "Bite", "label": "Bite (hare teeth)", "severity": 2.785427, "part": "body"}], "relationships": []}, "other_state": {"pawn_id": "Thing_Hare17877", "dead": false, "downed": false, "current_job": {"job_id": "Job_28121", "def": "AttackMelee", "player_forced": false, "start_tick": 40641, "target_a": {"kind": "pawn", "thing_id": "Thing_Wolverine17891", "def": "Wolverine", "label": "wolverine", "map_id": 0}, "target_b": null, "target_c": null}, "is_prisoner": false, "is_slave": false, "map_id": 0, "mood": null, "mental_state": null, "mood_contributors": [], "health": [{"def": "MissingBodyPart", "label": "Bitten out (fresh)", "severity": 0.5, "part": "left eye"}, {"def": "Scratch", "label": "Scratch (wolverine claw)", "severity": 5.269222, "part": "rear left leg"}, {"def": "MissingBodyPart", "label": "Torn off (fresh)", "severity": 0.5, "part": "rear left paw"}], "relationships": []}}}
 `
@@ -820,7 +955,7 @@ Other events (select sparingly):
 - Around 02:00 (next day): Adrian started Refuel involving fueled stove.`
     },
     {
-      label: 'Enrich', title: 'Ground it in RimWorld', file: 'context.prompt', meta: '+ retrieved context', type: 'code',
+      label: 'Enrich', title: 'Ground it in RimWorld', file: 'context.prompt', meta: 'retrieved context', type: 'code',
       description: 'Key terms trigger retrieval from an automatically built wiki index. Compact context is added so the model uses the game’s world and mechanics correctly.',
       content: `Relevant terminology (reference only):
 - glitterworld medicine: A kit of advanced ultra-tech medical supplies, probably manufactured on a distant glitterworld. It contains advanced polymorphic drugs, nanite diagnostic and healing assisters, a mini-imager, and various multi-use tools.
@@ -882,9 +1017,12 @@ The chill here bites deeper than any asteroid I've worked. Flora, bless her thic
   let demoIndex = 0;
 
   demoStages.forEach((stage, index) => {
-    const progress = document.createElement('div');
+    const progress = document.createElement('button');
     progress.className = 'demo-progress-step';
-    progress.innerHTML = `<div class="demo-progress-node"></div><div class="demo-progress-label">${stage.label}</div>`;
+    progress.type = 'button';
+    progress.setAttribute('aria-label', `Go to stage ${index + 1}: ${stage.label}`);
+    progress.innerHTML = `<span class="demo-progress-node" aria-hidden="true"></span><span class="demo-progress-label">${stage.label}</span>`;
+    progress.addEventListener('click', () => renderDemoStage(index));
     demoProgress.appendChild(progress);
 
     const dot = document.createElement('button');
@@ -940,6 +1078,7 @@ The chill here bites deeper than any asteroid I've worked. Flora, bless her thic
     [...demoProgress.children].forEach((item, i) => {
       item.classList.toggle('active', i === demoIndex);
       item.classList.toggle('complete', i < demoIndex);
+      item.setAttribute('aria-current', i === demoIndex ? 'step' : 'false');
     });
     [...demoDots.children].forEach((dot, i) => {
       dot.classList.toggle('active', i === demoIndex);
